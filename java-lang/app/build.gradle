@@ -25,6 +25,6 @@ test {
 
 eclipse {
     project {
-        name ="java-lang"
+        name ="java-lang-boot"
     }
 }
