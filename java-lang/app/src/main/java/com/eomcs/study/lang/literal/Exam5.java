@@ -32,11 +32,11 @@ public class Exam5 {
     double value = 987654321.12345678987654; // 8바이트 메모리 크기(유효자릿수 15자리)를 넘어서는 값은 짤린다.
     return "부동소수점: " + value;
   }
+  @GetMapping("/test5")
+  public String test5() {
+    double value = 987654.1421; // 8바이트 메모리 크기(유효자릿수 15자리)를 넘어서는 값은 짤린다.
+    int value2 = (int)value;
+    return "부동소수점: " + value2;
+  }
 }
-
-
-
-
-
-
 
