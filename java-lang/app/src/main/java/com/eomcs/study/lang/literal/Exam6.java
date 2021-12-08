@@ -43,13 +43,13 @@ public class Exam6 {
   }
 
   @GetMapping("/test6")
-  public String test6(boolean b) {
+  public String test6() {
     // 제어 코드
     //  \f - Form Feed, 0x0c
     //  \' - Single Quote, 0x27
     //  \" - Double Quote, 0x22
     //  \\ - Backslash, 0x5c
-    return "012\\ABC\\가각간\\똘똠똡똥"+b+""+;
+    return "012\\ABC\\가각간\\똘똠똡똥";
   }
 }
 

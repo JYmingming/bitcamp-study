@@ -1,4 +1,4 @@
-// 리터럴: 부동소수점 리터럴과 값의 범위
+// 리터럴: 문자 리터럴
 package com.eomcs.study.lang.literal;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,30 +11,35 @@ public class Exam5 {
 
   @GetMapping("/test1")
   public String test1() {
-    float value = 987.6543f; // 4바이트 메모리를 사용하는 리터럴
-    return "부동소수점: 1" + value;
+    return "문자1: " + 'A' + '가';
   }
 
   @GetMapping("/test2")
   public String test2() {
-    double value = 987654321.1234567; // 8바이트 메모리를 사용하는 리터럴
-    return "부동소수점: " + value;
+    return "문자2: " + '\u0041' + '\uac00'; // 문자에 대한 유니코드 값을 지정해도 된다.
   }
 
   @GetMapping("/test3")
   public String test3() {
-    float value = 987.654321f; // 4바이트 메모리 크기(유효자릿수 7자리)를 넘어서는 값은 짤린다.
-    return "부동소수점: " + value;
+    return "문자2: " + (char)0x41 + "," + (char)0xac00; // 문자 코드를 정수 값으로 지정한다. 
+    // 대신 문자를 가리키는 코드임을 표시해야 한다.
   }
 
   @GetMapping("/test4")
   public String test4() {
-    double value = 987654321.12345678987654; // 8바이트 메모리 크기(유효자릿수 15자리)를 넘어서는 값은 짤린다.
-    return "부동소수점: " + value;
+    return "문자2: " + (char)65 + "," + (char)44032; // 문자의 코드 값은 그냥 정수 값이다. 
+    // 대신 문자를 가리키는 코드임을 표시해야 한다.
   }
+
   @GetMapping("/test5")
   public String test5() {
-    return "부동소수점: " + '\543';
+    return "문자2: " + '\u4eba' + '\u00a9' + '\u03c0' + '\u03a3'; // 키보드에서 입력 불가능한 특수 문자를 가리킬 때 주로 유니코드를 사용한다.
   }
 }
+
+
+
+
+
+
 

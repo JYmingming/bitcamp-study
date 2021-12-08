@@ -20,8 +20,11 @@ public class Exam2 {
 
   @GetMapping("/test4")
   public int test4() {return 0x64;} // 16진수(문자의 코드 값을 표현할 때 많이 사용) hexidecimal
-
 }
+
+
+
+
 
 
 
