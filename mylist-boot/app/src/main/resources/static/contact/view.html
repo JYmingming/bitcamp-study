@@ -38,15 +38,23 @@ var xEmail = document.querySelector("#x-email");
 var xTel = document.querySelector("#x-tel");
 var xCompany = document.querySelector("#x-company");
 
-// 이메일을 가지고 연락처 정보를 가져온다.
-var result = "홍길동,hong@test.com,010-1111-2222,비트캠프";
+// 이메일을 가지고 연락처 상세 정보를 가져와서 입력폼에 넣는다.
+fetch(`/contact/get?email=${email}`)
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(result) {
+    if (result == "") {
+      window.alert("해당 이메일의 연락처를 찾을 수 없습니다!");
+      location.href = "index.html";
+    }
 
-var contact = result.split(",");
-xName.value = contact[0];
-xEmail.value = contact[1];
-xTel.value = contact[2];
-xCompany.value = contact[3];
-
+    var contact = result.split(",");
+    xName.value = contact[0];
+    xEmail.value = contact[1];
+    xTel.value = contact[2];
+    xCompany.value = contact[3];
+  });
 
 document.querySelector("#x-update-btn").onclick = function() {
   fetch(`/contact/add?name=${xName.value}&email=${xEmail.value}&tel=${xTel.value}&company=${xCompany.value}`)
