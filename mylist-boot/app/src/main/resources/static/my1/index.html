@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>오피쩜지지</title>
+</head>
+
+<body>
+  <h1>소환사목록</h1>
+  <a href="form.html">새 연락처</a>
+  <table id="x-contact-table" border="1">
+    <thead>
+      <tr>
+        <th>아이디</th>
+        <th>티어</th>
+        <th>주 포지션</th>
+        <th>주 챔피언</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--컨텐트 영역 -->
+    </tbody>
+  </table>
+
+
+
+  <script type="text/javascript">
+    var tbody = document.querySelector("#x-contact-table tbody")
+
+    fetch("/my1/list")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(contacts) {
+        console.log(contacts);
+        for (var contact of contacts) {
+          var values = contact.split(",");
+          var tr = document.createElement("tr");
+          tr.innerHTML = `<td><a href="view.html?userId=${values[0]}">${values[0]}</a></td>
+          <td>${values[1]}</td>
+          <td>${values[2]}</td>
+          <td>${values[3]}</td>`;
+          tbody.appendChild(tr);
+        }
+      });
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>소환사 등록</title>
+</head>
+<body>
+
+  <h1>새 소환사</h1>
+
+  <form>
+    아이디* : <input id="x-userId" type="text"><br>
+    티어* : <input id="x-tier" type="text"><br>
+    주 포지션 : <input id="x-position" type="text"><br>
+    주 챔피언 : <input id="x-champ" type="text"><br>
+    별표항목은 필수입력입니다.<br>
+    <button id="x-add-btn" type="button">등록</button>
+    <button id="x-cancel-btn" type="button">취소</button>
+  </form>
+
+  <script type="text/javascript">
+
+      var xUserId = document.querySelector("#x-userId");
+      var xTier = document.querySelector("#x-tier");
+      var xPosition = document.querySelector("#x-position");
+      var xChamp = document.querySelector("#x-champ");
+
+    document.querySelector("#x-add-btn").onclick = function() {
+      if (xUserId.value == "" || xTier.value == "") {
+        window.alert("필수 입력 항목이 비어 있습니다.");
+        return;
+      }
+
+      fetch(`/my1/add?userId=${xUserId.value}&tier=${xTier.value}&position=${xPosition.value}&champ=${xChamp.value}`)
+      .then(function(response) {
+        return response.text();
+      })
+      .then(function(text) {
+        console.log(text);
+        location.href = "index.html"
+      });
+    }//addBtn
+    document.querySelector("#x-cancel-btn").onclick = function() {
+      window.location.href = "index.html";
+      };
+    </script>
+
+</body>
+</html>
