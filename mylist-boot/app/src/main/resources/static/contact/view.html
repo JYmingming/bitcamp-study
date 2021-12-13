@@ -48,7 +48,7 @@ fetch(`/contact/get?email=${email}`)
       window.alert("해당 이메일의 연락처를 찾을 수 없습니다!");
       location.href = "index.html";
     }
-
+  // 4) 연락처 상세 정보를 화면에 출력한다
     var contact = result.split(",");
     xName.value = contact[0];
     xEmail.value = contact[1];

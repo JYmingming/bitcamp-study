@@ -1,51 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>연락처</title>
-  </head>
-  <body>
-  <h1>연락처</h1>
-  <a href="form.html">새 연락처</a>
-  <table id="x-contact-tbl" border=1>
-    <thead>
-      <tr>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <a href="form.html">새 연락처<a>
+<table id="x-contactTable" border="1">
+<thead>
+    <tr>
         <th>이름</th>
         <th>이메일</th>
         <th>전화</th>
         <th>회사</th>
-      </tr>
-    </thead>
-    <tbody>
+    </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<script>
+    var contacts = [
+        "aaa1,aaa@test.com,1111,비트캠프",
+        "aaa2,aaa@test.com,1111,비트캠프",
+        "aaa3,aaa@test.com,1111,비트캠프",
+        "aaa4,aaa@test.com,1111,비트캠프"
+    ];
 
-    </tbody>
-  </table>
 
-<script type="text/javascript">
+    var contactTable = document.querySelector("#x-contactTable tbody")
 
-
-fetch("/contact/list").then(function(response){
-  return response.json(); // JSON
-}).then(function(arr){
-    for (var str of arr) {
-      //console.log(contact); // 홍길동1, hong@test.com, 010-1111-2222, 비트캠프
-      //배열.split(","); => 배열에 문자열을 ,를 기준으로 잘라라
-      //console.log(contact.split(","));
-      var contact = str.split(","); // 배열 = ['홍길동1', ' hong@test.com', ' 010-1111-2222', ' 비트캠프']
-      var tr = document.createElement("tr");
-      //tr.innerHTML = "<td>" + arr[0] + "</td>" +"<td>" + arr[1] + "</td>" +
-      // "<td>" + arr[2] + "</td>" + "<td>" +  arr[3] + "</td>";
-      tr.innerHTML = `<td><a href="view.html?email=${contact[1]}">${contact[0]}</a></td>
-      <td>${contact[1]}</td>
-      <td>${contact[2]}</td>
-      <td>${contact[3]}</td>`;
-      tbody.appendChild(tr);
+    for(var contact of contacts){
+        var values = contact.split(",");
+        var tr = document.createElement("tr");
+        tr.innerHTML = `<td>${values[0]}</td>
+                        <td>${values[1]}</td>
+                        <td>${values[2]}</td>
+                        <td>${values[3]}</td>`
+        contactTable.appendChild(tr)
+        console.log(values[0], values[1], values[2] ,values[3], );
     }
-});
 
-var tbody = document.querySelector("#x-contact-tbl tbody");
-//id가 x-contact-tbl 인 태그 아래에 tbody태그인 자식태그를 찾아줘
+
 
 </script>
-  </body>
+</body>
 </html>
