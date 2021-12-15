@@ -7,7 +7,7 @@
 <body>
 <h1>소환사 상세정보</h1>
 <form>
-  아이디* : <input id="x-userId" type="text"><br>
+  아이디* : <input id="x-userId" type="text" ><br>
   티어* : <input id="x-tier" type="text"><br>
   주 포지션 : <input id="x-position" type="text"><br>
   주 챔피언 : <input id="x-champ" type="text"><br>
@@ -45,7 +45,7 @@ fetch(`/my1/get?userId=${userId}`)
 })
 .then(function(result) {
   if (result == "") {
-    window.alert("해당 아이디를 찾을 수 없습니다!");
+    window.alert("해당 아이디 찾을 수 없습니다!");
     location.href = "index.html";
   }
   // 4) 연락처 상세 정보를 화면에 출력한다
@@ -85,7 +85,6 @@ document.querySelector("#x-delete-btn").onclick=function(){
   })
   .then(function(result){
     console.log(result);
-    window.location.href = "index.html";
   });
 
 };
