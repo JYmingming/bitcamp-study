@@ -6,12 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController 
 public class ContactController {
 
-  String[] contacts = new String[5];
+  Contact[] contacts = new Contact[5];
   int size = 0;
+
 
   @RequestMapping("/contact/list")
   public Object list() {
-    String[] arr = new String[size]; 
+    Contact[] arr = new Contact[size]; 
     for (int i = 0; i < size; i++) { 
       arr[i] = contacts[i]; 
     }
@@ -19,13 +20,18 @@ public class ContactController {
   }
 
   @RequestMapping("/contact/add")
-  public Object add(String name, String email, String tel, String company) {
-    if(size == contacts.length) {
-      contacts = grow();
+  public Object add(Contact contact) {
+    System.out.println(contact);
+
+    if (size == contacts.length) { 
+      contacts = grow(); 
     }
-    contacts[size++] = createCSV(name, email, tel, company);
+
+    contacts[size++] = contact;
+
     return size;
-  }//add end
+  }
+
 
   @RequestMapping("/contact/get")
   public Object get(String email) {
@@ -38,13 +44,13 @@ public class ContactController {
   }
 
   @RequestMapping("/contact/update")
-  public Object update(String name, String email, String tel, String company) {
-    int index = indexOf(email);
+  public Object update(Contact contact) {
+    int index = indexOf(contact.email);
     if (index == -1) {
       return 0;
     }
 
-    contacts[index] = createCSV(name, email, tel, company);
+    contacts[index] = contact;
     return 1;
   }
 
@@ -55,15 +61,8 @@ public class ContactController {
       return 0;
     }
 
-    remove(index);
+    remove(index);  // 메서드 이름으로 코드의 의미를 짐작할 수 있다. 이것이 메서드로 분리하는 이유이다.
     return 1;
-  }
-
-  // 기능: 
-  // - 입력 받은 파라미터 값을 가지고 CSV 형식으로 문자열을 만들어 준다.
-  //
-  String createCSV(String name, String email, String tel, String company) {
-    return name + "," + email + "," + tel + "," + company;
   }
 
   // 기능:
@@ -72,7 +71,8 @@ public class ContactController {
   //
   int indexOf(String email) {
     for (int i = 0; i < size; i++) {
-      if (contacts[i].split(",")[1].equals(email)) { 
+      Contact contact = contacts[i];
+      if (contact.email.equals(email)) { 
         return i;
       }
     }
@@ -82,8 +82,8 @@ public class ContactController {
   // 기능:
   // - 배열에서 지정한 항목을 삭제한다.
   //
-  String remove(int index) {
-    String old = contacts[index];
+  Contact remove(int index) {
+    Contact old = contacts[index];
     for (int i = index + 1; i < size; i++) {
       contacts[i - 1] = contacts[i];
     }
@@ -91,34 +91,38 @@ public class ContactController {
     return old;
   }
 
-
-  String[] grow() {
-    int newCapacity = newLength();
-    String[] arr = new String[newCapacity];
-    //기존 배열의 값을 새배열로 복사한다.
-    copy(contacts,arr);
+  // 기능:
+  // - 배열의 크기를 늘린다.
+  // - 기존 배열의 값을 복사해온다.
+  //
+  Contact[] grow() {
+    Contact[] arr = new Contact[newLength()];
+    copy(contacts, arr);
     return arr;
-  }//grow
-
-  int newLength() {
-    return contacts.length+ (contacts.length >> 1);
   }
 
-  void copy(String[] source,String[] target) {
+  // 기능:
+  // - 주어진 배열에 대해 50% 증가시킨 새 배열의 길이를 알려준다.
+  //
+  int newLength() {
+    return contacts.length + (contacts.length >> 1);
+  }
+
+
+  // 기능: 
+  // - 배열을 복사한다.
+  // 
+  void copy(Contact[] source, Contact[] target) {
     int length = source.length;
-    if(target.length<source.length) {
-      length=target.length;
+    if (target.length < source.length) {
+      length = target.length;
     }
-    for(int i=0; i<source.length; i++) {
+    for (int i = 0; i < length; i++) {
       target[i] = source[i];
     }
   }
 
 }
-
-//기능:
-//- 배열의 크기를 늘린다.
-// -기존 배열의 값을 복사해온다.
 
 
 
