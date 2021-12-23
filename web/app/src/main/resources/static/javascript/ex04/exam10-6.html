@@ -9,32 +9,63 @@
 <script>
 "use strict"
 
-// 함수를 생성자처럼 사용하기  
-function createScore() {
-	// 자바스크립트는 생성자를 정의하는 문법이 따로 없다. 
-	// 일반 함수를 생성자처럼 사용한다.
-	// => new 명령을 사용하여 외부에서 빈 객체를 생성한 후, 
-	// => 일반 함수를 호출한다.
-	// => 외부에서 생성한 객체는 this를 통해 접근할 수 있다.
-	// => 만약 new 명령없이 이 함수를 호출한다면 this는 undefined 이다.
-	console.log(this);
+// 6) 함수 외부에서 객체를 생성한 후 즉시 초기화시키기
+
+// new 명령 다음에 바로 함수를 호출한다.
+function createScore(name, kor, eng, math) {
+	// new 명령을 실행한 후에 이 함수를 호출하면
+	// this 내장 변수에 그 생성된 객체 주소가 저장된다.
+	// 이렇게 되면 이 함수 내부에서 객체를 생성할 필요가 없다.
+	// this 내장 변수를 사용하여 객체를 사용하면 된다.
+	this.name = name;
+	this.kor = kor;
+	this.eng = eng;
+	this.math = math;
+	this.sum = function() {
+		return this.kor + this.eng + this.math;
+	};
+	this.aver = function() {
+		return this.sum() / 3;
+	};
+
+  // 이 함수에서 객체를 생성하지 않았기 때문에
+	// 객체를 리턴할 필요가 없다.
 }
 
-//일반 함수를 생성자로서 사용한다는 의미?
-// => new 명령 다음에 즉시 호출하는 것을 의미한다.
-// => 예) new createScore();
-var obj1 = new createScore(); 
-console.log("-----------------------");
+var scores = []; //new Array();
+scores[0] = new createScore("홍길동", 100, 100, 100);
+scores[1] = new createScore("임꺽정", 90, 90, 90);
+scores[2] = new createScore("유관순", 80, 80, 80);
 
-//일반 함수로 사용한다면 this에는 어떤 주소도 들어 있지 않다.
-var obj2 = createScore(); 
+// 이렇게 new 명령을 통해 생성된
+// 기본 객체를 초기화시키는 함수를 "생성자(constructor)" 라고 부른다.
 
+
+for (var score of scores) {
+    console.log(score.name, score.kor, score.eng, score.math,
+            score.sum(), score.aver());
+}
+
+// 다음과 같이 생성된 객체를 초기화시키는 것이 아니라
+// 객체를 생성해두는 일을 하는 함수는
+// "팩토리 함수(factory)"라 부른다.
+function createScore2(name, kor, eng, math) {
+	var obj = new Object();
+	obj.name = name;
+	obj.kor = kor;
+	obj.eng = eng;
+	obj.math = math;
+	obj.sum = function() {
+		return this.kor + this.eng + this.math;
+	};
+	obj.aver = function() {
+		return this.sum() / 3;
+	};
+	return obj;
+}
+var obj = createScore2("홍길동", 100, 90, 80);
+console.log(obj);
 
 </script>
 </body>
 </html>
-
-
-
-
-
