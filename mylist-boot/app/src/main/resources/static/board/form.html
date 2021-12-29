@@ -2,28 +2,40 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Todo</title>
+  <title>글쓰기</title>
+  <style>
+  #x-content{
+    width:300px;
+    height:300px;
+  }
+
+  </style>
 </head>
 <body>
 
-<h1>To-do</h1>
+<h1>글쓰기</h1>
 
 <form>
-할 일: <input id="x-title" type="text"><br>
+제목*: <input id="x-title" type="text"><br>
+내용*: <textarea id="x-content"></textarea><br><br>
+
+별표(*) 항목은 필수 입력입니다.<br>
 <button id="x-add-btn" type="button">등록</button>
 <button id="x-cancel-btn" type="button">취소</button>
 </form>
 
 <script type="text/javascript">
   var xTitle = document.querySelector("#x-title");
+  var xContent = document.querySelector("#x-content");
+  var date = new Date;
 
   document.querySelector("#x-add-btn").onclick = function() {
-    if (xTitle.value == "") {
+    if (xTitle.value == "" || xContent.value == "") {
       window.alert("필수 입력 항목이 비어 있습니다.");
       return;
     }
 
-    fetch(`/todo/add?title=${xTitle.value}`)
+    fetch(`/board/add?title=${xTitle.value}&content=${xContent.value}`)
       .then(function(response) {
         return response.text();
       })

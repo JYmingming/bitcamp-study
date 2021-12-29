@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>뭐 아무거나 게시판</title>
+
+
+<style>
+  #ti{
+    width: 300px;
+  }
+  #cnt{
+    text-align: center;
+    font-weight: bold;
+  }
+  #cnt2{
+    text-align: center;
+    width:100px;
+  }
+
+</style>
+
+
+</head>
+<body>
+<h1>게시판</h1>
+<a href="form.html" style="font-size:14pt;">글쓰기</a>
+
+
+<table id="x-contact-table" border="1">
+<thead>
+  <tr>
+    <th id="ti">제목</th>
+    <th id="cnt">조회수</th>
+    <th>날짜</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<br><button id="x-clear" type="button">게시판 초기화</button>
+<script type="text/javascript">
+  var tbody = document.querySelector("#x-contact-table tbody")
+
+  fetch("/board/list")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(contacts) {
+      console.log(contacts);
+      for (var contact of contacts) {
+        var tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td><a href="view.html?title=${contact.title}">${contact.title}</a></td>
+        <td id="cnt">${contact.viewCount}</td>
+        <td id="cnt2">2021.12.29</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    });
+
+  document.querySelector("#x-clear").onclick = function() {
+    fetch(`/board/clear`)
+      .then(function() {
+         location.href = "index.html";
+      });
+    }
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
