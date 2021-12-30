@@ -2,23 +2,15 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>글쓰기</title>
-  <style>
-  #x-content{
-    width:300px;
-    height:300px;
-  }
-
-  </style>
+  <title>게시글</title>
 </head>
 <body>
 
-<h1>글쓰기</h1>
+<h1>새 게시글</h1>
 
 <form>
 제목*: <input id="x-title" type="text"><br>
-내용*: <textarea id="x-content"></textarea><br><br>
-
+내용*: <textarea id="x-content" cols="60" rows="10"></textarea><br>
 별표(*) 항목은 필수 입력입니다.<br>
 <button id="x-add-btn" type="button">등록</button>
 <button id="x-cancel-btn" type="button">취소</button>
@@ -27,7 +19,6 @@
 <script type="text/javascript">
   var xTitle = document.querySelector("#x-title");
   var xContent = document.querySelector("#x-content");
-  var date = new Date;
 
   document.querySelector("#x-add-btn").onclick = function() {
     if (xTitle.value == "" || xContent.value == "") {
