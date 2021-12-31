@@ -29,7 +29,7 @@ public class Exam0110 {
     Score score = new Score();
 
     // - 클래스로 만든 메모리는 레퍼런스를 통해 접근한다.
-    score.name = "홍길동dd";
+    score.name = "홍길동dddd";
     score.kor = 100;
     score.eng = 90;
     score.math = 85;
