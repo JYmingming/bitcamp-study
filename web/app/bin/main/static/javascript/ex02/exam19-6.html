@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex02</title>
+</head>
+<body>
+<h1>반복문 - for(... of 객체)</h1>
+<script>
+"use strict"
+
+function* getIterableObject(){
+  yield "홍길동";
+  yield "임꺽정";
+  yield "유관순";
+  yield "안중근";
+}
+
+
+var obj2 = getIterableObject();
+
+while(true){
+  var {value, done} = obj2.next();
+}
+  if (done){
+    break;
+  }
+  for v =value;
+  console.log(v);
+}
+
+
+// for (
+//   var i = ; i < object.legend; i+) {
+//   array[i]
+// }
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex04</title>
+</head>
+<body>
+<h1>객체 - 함수소속 프로퍼티와 객체 소속 프로퍼티</h1>
+<script>
+"use strict"
+
+//생성자 정의
+function Score(name, kor, eng, math){
+  this.name = "홍길동";
+  this.kor = kor;
+  this.eng = eng;
+  this.math = math;
+
+}
+//4) 함수 소속 프로퍼티의 적절한
+
+// -> 다음과 같이 특정 객체의 값을 다루는 함수는 prototype 소속으로 만들라
+score.prototype.sum = function(){
+  return this.kor + this.eng + this.math;
+};
+
+score.prototype.aver = function(){
+  return this.sum()/3;
+};
+
+// -> 특정 객체를 다루는 경우가 않는 상황에서는 함수 소속 프로퍼티로 만들라 !
+Score.count =0;
+Score.create= function(csv){
+  var values= csv.split(",");
+  return new Score(values[0],parseInt(values[1]),parseInt(values[2]),parseInt(values[3]));
+};
+
+//함수에 소속된 프로퍼티를 사용할 때는
+//함수 이름을 통해 사용한다.
+
+var score1 =Score.create("홍길동,100,100,100");
+var score2 =Score.create("홍길동,90,90,90");
+
+console.log(score1.sum(),score1.aver());
+console.log(score2.sum(),score2.aver());
+
+
+var score1 = new Score("홍길동",100,100,100);
+console.log(score1.sum(),score1.aver());
+  // 다음 sum() 과 aver() 함수는 score1 객체에만 소속된다.
+var score2 = new Score("임꺽정",200,200,200);
+console.log(scroe2.sum(),score2.aver());
+
+// 1) 객체 소속 프로퍼티
+
+
+</script>
+</body>
+</html>
