@@ -15,7 +15,7 @@ public class Exam0112 {
         (byte)0xb6, (byte)0xca, // 똘
         (byte)0xb6, (byte)0xcb  // 똥
     };
-    String s1 = new String(bytes);
+    String s1 = new String(bytes,"Euc-kr");
     System.out.println(s1);
     // 결과: 
     // => 한글 출력이 깨진다.

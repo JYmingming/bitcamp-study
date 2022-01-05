@@ -16,12 +16,13 @@ public class Exam0430 {
     }
 
     Score(String name) {
-      System.out.println("Score(String)");
+      System.out.println("그냥 이거실행 ");
       this.name = name;
+
     }
 
     Score(String name, int kor, int eng, int math) {
-      System.out.println("Score(String,int,int,int) 호출!");
+      System.out.println("Score(String,int,int,int) 호출ㅌㅎㄴㅇㄹㄴㅇㄹㅇㄴ!");
       this.name = name;
       this.kor = kor;
       this.eng = eng;

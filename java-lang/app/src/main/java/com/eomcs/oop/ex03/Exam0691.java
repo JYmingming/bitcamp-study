@@ -8,7 +8,7 @@ public class Exam0691 {
 
     static {
       System.out.println("A.static{}");
-      a += B.b;
+      a += B.b; //7 + B.b(29)  = 36
     }
   }
 
@@ -17,13 +17,13 @@ public class Exam0691 {
 
     static {
       System.out.println("B.static{}");
-      b += A.a;
+      b += A.a; //29 최초 초기화 7 
     }
   }
 
   public static void main(String[] args) {
-    System.out.println(A.a); // ?
-    System.out.println(B.b); // ?
+    System.out.println(A.a); //
+    System.out.println(B.b); //
 
     // 클래스 로딩 절차
     // 1) 클래스를 Method Area에 로딩한다.
