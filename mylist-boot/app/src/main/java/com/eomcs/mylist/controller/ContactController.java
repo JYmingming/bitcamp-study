@@ -1,17 +1,21 @@
 package com.eomcs.mylist.controller;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Contact;
 import com.eomcs.util.ArrayList;
 
 @RestController 
+@SpringBootApplication
 public class ContactController {
 
   // Contact 객체 목록을 저장할 메모리 준비
   // => Object[] list = new Object[5];
   // => int size = 0;
   ArrayList contactList = new ArrayList();
+
+
 
   @RequestMapping("/contact/list")
   public Object list() {

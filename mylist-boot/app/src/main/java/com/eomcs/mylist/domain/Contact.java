@@ -6,6 +6,10 @@ public class Contact {
   String tel;
   String company;
 
+  public Contact() {
+    System.out.println("Contact()호출됨!");
+  }
+
   @Override
   public String toString() {
     return "Contact [name=" + name + ", email=" + email + ", tel=" + tel + ", company=" + company
