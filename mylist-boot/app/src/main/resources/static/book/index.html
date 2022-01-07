@@ -20,20 +20,20 @@
 </table>
 
 <script type="text/javascript">
-  var tbody = document.querySelector("#x-book-table tbody")
+  var tbody = document.querySelector("#x-book tbody")
 
   fetch("/book/list")
     .then(function(response) {
       return response.json();
     })
-    .then(function(boards) {
-      console.log(boards);
+    .then(function(books) {
+      console.log(books);
       for (var i = 0; i < boards.length; i++) {
-        var board = boards[i];
+        var book = books[i];
         var tr = document.createElement("tr");
-        tr.innerHTML = `<td><a href="view.html?index=${i}">${board.title}</a></td>
-        <td>${board.viewCount}</td>
-        <td>${board.createdDate}</td>`;
+        tr.innerHTML = `<td><a href="view.html?index=${i}">${book.title}</a></td>
+        <td>${book.viewCount}</td>
+        <td>${book.createdDate}</td>`;
         tbody.appendChild(tr);
       }
     });
