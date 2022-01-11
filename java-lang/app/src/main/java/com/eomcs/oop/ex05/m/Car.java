@@ -33,6 +33,7 @@ public abstract class Car {
     super();
   }
 
+
   public void start() {
     System.out.println("시동 건다!");
   }
@@ -43,6 +44,7 @@ public abstract class Car {
 
   public void run() {
     System.out.println("달린다.");
+
   }
 
 }
