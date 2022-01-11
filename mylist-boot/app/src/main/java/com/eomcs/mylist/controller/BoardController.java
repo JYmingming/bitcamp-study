@@ -16,15 +16,9 @@ public class BoardController {
     System.out.println("BoardController() 호출됨!");
     com.eomcs.io.FileReader2 in = new com.eomcs.io.FileReader2("boards.csv");
 
-    StringBuilder buf = new StringBuilder();
-    int c;
-    while ((c = in.read()) != -1) {
-      if (c == '\n') {
-        boardList.add(Board.valueOf(buf.toString())); 
-        buf.setLength(0); 
-      } else { 
-        buf.append((char) c);
-      }
+    String line;
+    while ((line = in.readLine()).length() != 0) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
+      boardList.add(Board.valueOf(line)); 
     }
 
     in.close();
