@@ -24,10 +24,7 @@ public class Exam0311 {
         s.model, s.capacity,
         s.cc, s.valve,
         s.sunroof, s.auto);
-
-
   }
-
 }
 
 

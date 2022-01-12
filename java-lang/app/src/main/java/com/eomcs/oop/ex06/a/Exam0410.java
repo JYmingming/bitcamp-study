@@ -19,7 +19,6 @@ public class Exam0410 {
     Truck truck = new Truck();
     truck.model = "타이탄II";
     truck.cc = 10000;
-
     printSedan(sedan);
 
     // printSedan()의 파라미터는 Sedan 객체의 주소만 받을 수 있다.

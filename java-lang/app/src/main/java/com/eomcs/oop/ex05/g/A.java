@@ -18,8 +18,8 @@ public class A /*extends Object*/ {
     System.out.println("A() 생성자!");
     this.v1 = 100;
   }
-  A(int H){
-    this.v1 = H;
+  A(int test){
+    this.v1 = test;
   }
 }
 

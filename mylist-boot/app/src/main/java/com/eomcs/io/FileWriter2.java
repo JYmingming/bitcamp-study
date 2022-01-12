@@ -25,9 +25,3 @@ public class FileWriter2 {
     out.close();
   }
 }
-
-
-
-
-
-

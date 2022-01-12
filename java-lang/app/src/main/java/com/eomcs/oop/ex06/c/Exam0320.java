@@ -17,9 +17,9 @@ public class Exam0320 {
     //    @Override public m() {}
 
     //    @Override private void m2() {} // 컴파일 오류! 원래 접근 범위 보다 좁힐 수 없다.
-    //    @Override  void m2() {} // 접근 범위를 원래 대로 지정하는 것. OK!
+    q       @Override  void m2() {} // 접근 범위를 원래 대로 지정하는 것. OK!
     //    @Override protected void m2() {} // OK! default 보다 접근 범위를 확대하는 것은 허용된다.
-    @Override public void m2() {} // OK! default 보다 접근 범위를 확대하는 것은 허용된다.
+    //@Override public void m2() {} // OK! default 보다 접근 범위를 확대하는 것은 허용된다.
 
     //    @Override private void m3() {} // 컴파일 오류! 원래 접근 범위 보다 좁힐 수 없다.
     //    @Override void m3() {} // 컴파일 오류! 원래 접근 범위 보다 좁힐 수 없다.
