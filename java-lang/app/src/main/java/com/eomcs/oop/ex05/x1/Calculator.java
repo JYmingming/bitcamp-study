@@ -1,7 +1,6 @@
-package com.eomcs.oop.ex05.x1.test3;
+package com.eomcs.oop.ex05.x1;
 
-
-public class Calculator3 {
+public class Calculator {
 
   public int result;
 
@@ -12,7 +11,6 @@ public class Calculator3 {
   public void minus(int value) {
     this.result -= value;
   }
-  public void multiple(int value) {
-    this.result *= value;
-  }
+
 }
+

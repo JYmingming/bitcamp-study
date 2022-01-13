@@ -21,7 +21,7 @@ public class Exam0210 {
       // 그런데 개발자는 오버라이딩(재정의)을 했다고 착각하고 사용할 것이다.
       System.out.println("B2의 m()");
     }
-  }
+  }ㅉ
   public static void main(String[] args) {
     // 1) 오버라이딩을 잘못한 예:
     B2 obj = new B2();

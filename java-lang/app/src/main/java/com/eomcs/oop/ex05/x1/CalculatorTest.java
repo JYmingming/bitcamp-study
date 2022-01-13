@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex05.x1.test1;
+package com.eomcs.oop.ex05.x1;
 
 public class CalculatorTest {
 

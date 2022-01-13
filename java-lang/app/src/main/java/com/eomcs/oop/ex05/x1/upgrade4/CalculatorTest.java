@@ -1,7 +1,7 @@
-package com.eomcs.oop.ex05.x1.test5;
+package com.eomcs.oop.ex05.x1.upgrade4;
 
 
-//곱하기 계산 기능을 수행
+//
 public class CalculatorTest {
 
   public static void main(String[] args) {

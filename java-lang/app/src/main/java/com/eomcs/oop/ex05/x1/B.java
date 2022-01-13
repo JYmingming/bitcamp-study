@@ -1,4 +1,6 @@
-package com.eomcs.oop.ex06.b;
+package com.eomcs.oop.ex05.x1;
+
+import com.eomcs.oop.ex06.b.A;
 
 public class B extends A {
   

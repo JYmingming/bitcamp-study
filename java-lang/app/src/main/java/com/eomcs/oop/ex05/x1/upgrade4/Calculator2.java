@@ -1,9 +1,9 @@
-package com.eomcs.oop.ex05.x1.test5;
+package com.eomcs.oop.ex05.x1.upgrade4;
 
 
 public class Calculator2{
 
-  com.eomcs.oop.ex05.x1.test1.Calculator origin = new com.eomcs.oop.ex05.x1.test1.Calculator();
+  com.eomcs.oop.ex05.x1.Calculator origin = new com.eomcs.oop.ex05.x1.Calculator();
 
 
 

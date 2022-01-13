@@ -16,7 +16,7 @@ public class Exam0130 {
     // => 안된다.
     // => 둘 중 하나만 상속 받거나 구현해야지, 동시에 다 할 수 없다.
     //
-    A obj = new A implements B() { // 컴파일 오류!
+    A obj = new A implementscom.eomcs.oop.ex05.x1.B() { // 컴파일 오류!
       @Override
       public void print() {
         System.out.println("Hello!");
