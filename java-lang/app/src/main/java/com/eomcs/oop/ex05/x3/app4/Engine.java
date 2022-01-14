@@ -1,35 +1,37 @@
 package com.eomcs.oop.ex05.x3.app4;
 
-/* 애플리케이션을 만들 때 마다 Engine 클래스에 기능을 추가 
--> 한클래스가 많은 역할 수행
--> 애플리케이션을 만드는 입장에서는 불필요한 기능까지 가져가야 한다.
--> 기존 코드를 변경하다보면 버그가 추가 될 가능성이 높아진다.
-
-
- */
 public class Engine {
   int cc;
   int valve;
 
-  int kwh;
-  public void ChargeBattery(int kwh) {
-    this.kwh=kwh;
-  }
-
   public void run() {
-    if(kwh >0 ) {
+    // 하이브리드 전기차 구동 기능 추가
+    if (kwh > 0) {
       System.out.println("전기로 간다!");
-      return;
-    }else {
-      System.out.println("엔진이 돈다!");
+    } else {
+      System.out.println("씽씽 달리다!");
     }
   }
+
+  // 자동차 기능 추가
   public void start() {
-    System.out.println("시동건다");
-  }
-  public void stop() {
-    System.out.println("시동끈다");
+    System.out.println("시동 건다!");
   }
 
+  public void stop() {
+    System.out.println("시동 끈다!");
+  }
+
+  // 하이브리드 자동차 기능 추가
+  int kwh;
+  public void chargeBattery(int kwh) {
+    this.kwh = kwh;
+  }
 }
+
+
+
+
+
+
 

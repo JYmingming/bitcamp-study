@@ -1,5 +1,8 @@
 package com.eomcs.mylist.controller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.io.FileWriter2;
@@ -13,14 +16,16 @@ public class BookController {
 
   public BookController() throws Exception {
     System.out.println("BookController() 호출됨!");
-    com.eomcs.io.FileReader2 in = new com.eomcs.io.FileReader2("books.csv");
+
+    BufferedReader in2 = new BufferedReader(new FileReader("books.csv")); //주 객체에데코레이터 객체를 연결 
+
 
     String line;
-    while ((line = in.readLine()).length() != 0) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
+    while ((line = in2.readLine()) != null) { // readLine() Null 을 리턴한다면 파일을 다 읽었다는 것이다 .
       bookList.add(Book.valueOf(line)); 
     }
 
-    in.close();
+    in2.close();
   }
 
   @RequestMapping("/book/list")
@@ -61,8 +66,10 @@ public class BookController {
 
   @RequestMapping("/book/save")
   public Object save() throws Exception {
-    FileWriter2 out = new FileWriter2("books.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
-
+    
+    PrintWriter out2 =new PrintWriter(new FileWriter2("books.csv"));
+    
+    
     Object[] arr = bookList.toArray();
     for (Object obj : arr) {
       Book book = (Book) obj;

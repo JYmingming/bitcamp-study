@@ -1,8 +1,6 @@
 // 메서드 오버로딩(overloading) - 서브 클래스에서 오버로딩하기
 package com.eomcs.oop.ex06.b;
 
-import com.eomcs.oop.ex05.x1.B;
-
 public class Exam0220 {
   public static void main(String[] args) {
     // 자식 클래스에서 부모 클래스에 있는 메서드와 

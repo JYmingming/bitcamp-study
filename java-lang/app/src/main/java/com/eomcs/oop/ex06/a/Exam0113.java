@@ -1,4 +1,4 @@
-ㅉㅉ// 다형성 - 다형적 변수(polymorphic variables)
+// 다형성 - 다형적 변수(polymorphic variables)
 package com.eomcs.oop.ex06.a;
 
 public class Exam0113 {

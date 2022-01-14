@@ -1,5 +1,7 @@
 package com.eomcs.mylist.controller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.io.FileWriter2;
@@ -13,14 +15,14 @@ public class TodoController {
 
   public TodoController() throws Exception {
     System.out.println("TodoController() 호출됨!");
-    com.eomcs.io.FileReader2 in = new com.eomcs.io.FileReader2("todos.csv");
+    BufferedReader in2 = new BufferedReader(new FileReader("todos.csv")); //주 객체에데코레이터 객체를 연결
 
     String line;
-    while ((line = in.readLine()).length() != 0) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
+    while ((line = in2.readLine()) != null) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
       todoList.add(Todo.valueOf(line)); 
     }
 
-    in.close();
+    in2.close();
   }
 
   @RequestMapping("/todo/list")

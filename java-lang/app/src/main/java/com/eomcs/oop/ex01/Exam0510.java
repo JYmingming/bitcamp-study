@@ -38,7 +38,6 @@ public class Exam0510 {
   // bin/main/com/eomcs/oop/ex01/Exam0510$C.class
   class C {}
 
-
   public static void main(String[] args) {
     // 3) 로컬 클래스(local class)
     // - 메서드 블록 안에 정의된 클래스
@@ -69,10 +68,10 @@ public class Exam0510 {
     B obj2 = new B();
 
     // 스태틱 멤버는 논-스태틱 중첩 클래스(인스턴스 멤버)를 사용할 수 없다.
-    // C obj3 = new C(); // 컴파일 오류!
+    //    C obj3 = new C(); // 컴파일 오류!
 
     // 다른 메서드에 정의된 로컬 클래스는 사용할 수 없다.
-    // D obj4 = new D(); // 컴파일 오류!
+    //    D obj4 = new D(); // 컴파일 오류! 
 
   }
 

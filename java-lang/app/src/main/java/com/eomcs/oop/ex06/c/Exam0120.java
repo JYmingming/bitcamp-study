@@ -39,7 +39,6 @@ public class Exam0120 {
     // 
     // * 메서드 시그너처(method signature) = 함수 프로토타입(function prototype)
     //       메서드명, 파라미터 타입/개수/순서
-    @Override
     void print() {
       System.out.println("A3.print():");
       System.out.printf("  => this.name(%s)\n", this.name);
@@ -56,7 +55,7 @@ public class Exam0120 {
 
     // A3 클래스에서 A 클래스의 print() 메서드를 재정의 했기 때문에
     // 다음 호출하는 메서드는 A3의 print() 메서드가 된다.
-    obj.print();// A3에서 재정의한 print() 호출
+    obj.print(); // A3에서 재정의한 print() 호출
 
   }
 }

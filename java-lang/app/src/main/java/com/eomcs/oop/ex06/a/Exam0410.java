@@ -11,7 +11,8 @@ public class Exam0410 {
     System.out.println("-------------------------");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
+
     Sedan sedan = new Sedan();
     sedan.model = "티코";
     sedan.cc = 800;
@@ -19,6 +20,7 @@ public class Exam0410 {
     Truck truck = new Truck();
     truck.model = "타이탄II";
     truck.cc = 10000;
+
     printSedan(sedan);
 
     // printSedan()의 파라미터는 Sedan 객체의 주소만 받을 수 있다.
