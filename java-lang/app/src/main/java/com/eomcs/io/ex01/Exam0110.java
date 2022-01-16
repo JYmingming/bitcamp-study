@@ -16,7 +16,7 @@ public class Exam0110 {
     // => 이클립스 : 프로젝트 디렉토리를 가리킨다.
     // => 콘솔 : 현재 명령어를 실행하는 위치를 가리킨다.
     //
-    File currentDir = new File("./src/main/java");
+    File currentDir = new File("./src/main/java2");
     System.out.printf("폴더명: %s\n", currentDir.getName());
     System.out.printf("경로: %s\n", currentDir.getPath());
     System.out.printf("절대경로: %s\n", currentDir.getAbsolutePath());
@@ -30,7 +30,9 @@ public class Exam0110 {
     System.out.printf("파일여부: %b\n", currentDir.isFile());
     System.out.printf("감춤폴더: %b\n", currentDir.isHidden());
     System.out.printf("존재여부: %b\n", currentDir.exists());
-    System.out.printf("실행가능여부: %b\n", currentDir.canExecute());
+    System.out.printf("접근가능여부: %b\n", currentDir.canExecute());
   }
-
 }
+
+
+
