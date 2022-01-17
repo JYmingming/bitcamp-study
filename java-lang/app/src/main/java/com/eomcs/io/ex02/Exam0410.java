@@ -9,7 +9,7 @@ public class Exam0410 {
   public static void main(String[] args) throws Exception {
 
     // 1) 파일 정보를 준비한다.
-    File file = new File("sample/photo1.jpg");
+    File file = new File("sample/1.jpg");
 
     // 2) 파일을 읽을 도구를 준비한다.
     FileInputStream in = new FileInputStream(file);

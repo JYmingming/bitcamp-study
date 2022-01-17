@@ -27,20 +27,18 @@ public class Exam0710 {
   }
 
   static void printList(File dir, int level) {
-
     // 현재 디렉토리의 하위 파일 및 디렉토리 목록을 알아낸다.
     File[] files = dir.listFiles();
 
     // 리턴 받은 파일 배열에서 이름을 꺼내 출력한다.
     for (File file : files) {
-
       printIndent(level);
 
       if (file.isDirectory() && !file.isHidden()) {
         System.out.printf("%s/\n", file.getName());
         printList(file, level + 1);
       } else if (file.isFile()) {
-        System.out.print("\\-- ");
+        System.out.print("\\--");
         System.out.printf("%s\n", file.getName());
       }
     }

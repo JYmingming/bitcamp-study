@@ -18,14 +18,14 @@ public class Exam0320 {
     // read(byte[], 저장할 위치, 저장하기를 희망하는 개수)
     //   => 읽은 데이터를 "저장할 위치"에 지정된 방부터 개수만큼 저장한다.
     //   => 리턴 값은 실제 읽은 바이트 개수이다.
-    int count = in.read(buf, 10, 40); // 40바이트를 읽어 10번 방부터 저장한다.
+    int count = in.read(buf, 10, 5); // 40바이트를 읽어 10번 방부터 저장한다.
 
     in.close();
 
     System.out.printf("%d\n", count);
 
-    for (int i = 0; i < 20; i++)
-      System.out.printf("%02x ", buf[i]);
+    for (int i = 0; i < 100; i++)
+      System.out.printf("%d : %02x\n ",i, buf[i]);
 
     System.out.println();
 

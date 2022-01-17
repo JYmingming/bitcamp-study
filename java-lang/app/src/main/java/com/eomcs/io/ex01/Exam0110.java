@@ -9,13 +9,19 @@ public class Exam0110 {
     // File 클래스
     // => 디렉토리나 파일을 다룰 때 사용하는 클래스이다.
     // => 디렉토리나 파일을 생성, 삭제, 변경할 수 있다.
-
     // 현재 디렉토리를 조회
     // => '.' 으로 표현한다.
     // => JVM을 실행하는 위치가 현재 폴더이다.
     // => 이클립스 : 프로젝트 디렉토리를 가리킨다.
     // => 콘솔 : 현재 명령어를 실행하는 위치를 가리킨다.
-    //
+    ///
+    /*
+     *File zmffotm
+     * 
+     * 
+     * 
+     * 
+     * */
     File currentDir = new File("./src/main/java2");
     System.out.printf("폴더명: %s\n", currentDir.getName());
     System.out.printf("경로: %s\n", currentDir.getPath());
@@ -33,6 +39,3 @@ public class Exam0110 {
     System.out.printf("접근가능여부: %b\n", currentDir.canExecute());
   }
 }
-
-
-
