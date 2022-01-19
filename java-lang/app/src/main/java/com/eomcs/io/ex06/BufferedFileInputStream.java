@@ -12,16 +12,23 @@ public class BufferedFileInputStream extends FileInputStream {
     super(filename);
   }
 
+
+  //파일에서 버퍼로 왕창읽어온 횟수
+  int readCount = 0; 
+
   @Override
   public int read() throws IOException {
     if (cursor == size) { // 버퍼에 저장되어 있는 데이터를 모두 읽었다는 의미
       if ((size = super.read(buf)) == -1) { // 파일에서 데이터를 읽으려 했는데 데이터가 없다.
         return -1;
       }
+      readCount++;
+      System.out.printf("=>버퍼로 왕창 읽었음!  %d \n",readCount);
       cursor = 0;
     }
     return buf[cursor++] & 0x000000ff;
   }
+
 
   @Override
   public int read(byte[] buf) throws IOException {
@@ -38,5 +45,4 @@ public class BufferedFileInputStream extends FileInputStream {
     return i; // 지금까지 읽은 데이터의 수를 리턴한다.
   }
 }
-
 

@@ -23,7 +23,14 @@ public class Exam0110 {
     //
     //   Linux, macOS 의 기본 character set => UTF-8
     //   Windows 의 기본 character set => MS-949
+    //   JVM을 실행할  때 -Dfile.encoding=문자집합 옵션으로 기본 문자 집할을 설정한다.
+    //   만약 file.encoding 옵션을 설정하지 않으면 OS의 문자집합으로 자동 설정된다.  
+
+    //  - 이클립스에서실행 할 경우.
+    //  - 이클립스가 file.encoding 옵션의 문자집합을 UTF-8로 설정한다.
     //
+
+
     // - 따라서 같은 프로그램을 어느 OS에서 실행하느냐에 따라
     //   출력되는 코드 값이 달라진다.
     //   만약 이클립스에서 실행한다면,

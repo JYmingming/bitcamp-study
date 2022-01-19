@@ -17,7 +17,7 @@ public class Exam0230 {
       // 그래서 1바이트씩 파일로 바로 출력하는 것 보다 더 빠르다.
     }
 
-    // BufferedOutputStream은 바이트 배열이 꽉 찼을 때만 파일로 출력하기 때문에
+    // BufferedFileOutputStream은 바이트 배열이 꽉 찼을 때만 파일로 출력하기 때문에
     // 바이트 배열에 데이터가 남아 있을 경우 강제적으로 출력해야 한다.
     out.flush(); // 버퍼에 남아 있는 것을 방출한다.
 

@@ -22,18 +22,22 @@ public class BufferedFileOutputStream extends FileOutputStream {
     buf[cursor++] = (byte) b;
   }
 
+
+
   @Override
   public void write(byte[] buf) throws IOException {
     for (byte b : buf) {
       this.write(b & 0x000000ff);
     }
   }
+  //항상 입출력 스트림을 사용한 다음에는 자원 해제를 위해 close() 을 해제하여야 한다.
 
 
   @Override
   public void close() throws IOException {
     this.flush();
     super.close();
+
   }
 
 

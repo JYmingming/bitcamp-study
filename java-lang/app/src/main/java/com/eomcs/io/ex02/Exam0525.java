@@ -22,6 +22,6 @@ public class Exam0525 {
     //  UCS2 코드 값으로 정확하게 변환해 줄 것이다.
     String str = new String(buf, 0, count, "UTF-16LE");
     System.out.println(str);
-  }
+  }                                 1
 
 }
