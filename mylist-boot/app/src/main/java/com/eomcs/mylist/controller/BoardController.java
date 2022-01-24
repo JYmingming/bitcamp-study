@@ -1,6 +1,7 @@
 package com.eomcs.mylist.controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -9,28 +10,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Board;
 import com.eomcs.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController 
 public class BoardController {
 
   ArrayList boardList = new ArrayList();
 
-  public BoardController() throws Exception {
+  public BoardController() {
     System.out.println("BoardController() 호출됨!");
 
+    try {
+      BufferedReader in = new BufferedReader(new FileReader("boards.json"));
 
-    //1) 주 작업 객체 
-    FileReader  in =new FileReader("boards.csv");
+      // JSON 문자열을 다룰 객체 준비
+      ObjectMapper mapper = new ObjectMapper();
 
-    BufferedReader in2=new BufferedReader(in);
+      // 1) JSON 파일에서 문자열을 읽어 온다.
+      // => 읽어 온 문자열은 배열 형식이다.
+      String jsonStr = in.readLine();
 
+      // 2) JSON 문자열을 가지고 자바 객체를 생성한다.
+      // => 배열 형식의 JSON 문자열에서 Board의 배열 객체를 생성한다.
+      Board[] boards = mapper.readValue(jsonStr, Board[].class);
+      // 3) 배열 객체를 ArrayList 에 저장한다.
+      // => 다음과 같이 배열에서 한 개씩 꺼내 목록에 추가할 수 있다.
+      // 다음과 같이생성자를 통해 배열을목록에 추가할 수 있다.
+      boardList = new ArrayList(boards);
 
-    String line;
-    while ((line = in2.readLine()) != null) { // 더 이상 읽은 데이터가 없다면 , 
-      boardList.add(Board.valueOf(line)); 
+      in.close();
+
+    } catch (Exception e) {
+      System.out.println("게시글 데이터 로딩 중 오류 발생!");
     }
-    in2.close();
-    //in.close();// 데코레이터를 close(); 하면 그 데코레이터와 연결된 객체들도 모두 close() 된다.
   }
 
   @RequestMapping("/board/list")
@@ -81,21 +93,20 @@ public class BoardController {
 
   @RequestMapping("/board/save")
   public Object save() throws Exception {
-    //1) 주 작업 객체 준
-    FileWriter out = new FileWriter("boards.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("boards.json")));
 
-    //2) 한줄 단위로 출력 하는 데코레이터 객체 준비
-    PrintWriter out2 = new PrintWriter(out);
+    // JSON 형식의 문자열을 다룰 객체를 준비한다.
+    ObjectMapper mapper = new ObjectMapper();
 
+    // 1) 객체를 JSON 형식의 문자열로 생성한다.
+    // => ArrayList 에서 Board 배열을 꺼낸 후 JSON 문자열로 만든다.
+    String jsonStr = mapper.writeValueAsString(boardList.toArray()); 
 
-    Object[] arr = boardList.toArray();
-    for (Object obj : arr) {
-      Board board = (Board) obj;
-      out2.println(board.toCsvString());
-    }
+    // 2) JSON 형식으로 바꾼 문자열을 파일로 출력한다.
+    out.println(jsonStr);
 
-    out2.close();
-    return arr.length;
+    out.close();
+    return boardList.size();
   }
 }
 

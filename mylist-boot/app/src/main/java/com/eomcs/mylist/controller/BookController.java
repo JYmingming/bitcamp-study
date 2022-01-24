@@ -1,13 +1,15 @@
 package com.eomcs.mylist.controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.eomcs.io.FileWriter2;
 import com.eomcs.mylist.domain.Book;
 import com.eomcs.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController 
 public class BookController {
@@ -17,15 +19,15 @@ public class BookController {
   public BookController() throws Exception {
     System.out.println("BookController() 호출됨!");
 
-    BufferedReader in2 = new BufferedReader(new FileReader("books.csv")); //주 객체에데코레이터 객체를 연결 
+    try {
+      BufferedReader in = new BufferedReader(new FileReader("books.json"));
+      ObjectMapper mapper = new ObjectMapper();
+      bookList = new ArrayList(mapper.readValue(in.readLine(), Book[].class));
+      in.close();
 
-
-    String line;
-    while ((line = in2.readLine()) != null) { // readLine() Null 을 리턴한다면 파일을 다 읽었다는 것이다 .
-      bookList.add(Book.valueOf(line)); 
+    } catch (Exception e) {
+      System.out.println("게시글 데이터 로딩 중 오류 발생!");
     }
-
-    in2.close();
   }
 
   @RequestMapping("/book/list")
@@ -66,18 +68,20 @@ public class BookController {
 
   @RequestMapping("/book/save")
   public Object save() throws Exception {
-    
-    PrintWriter out2 =new PrintWriter(new FileWriter2("books.csv"));
-    
-    
-    Object[] arr = bookList.toArray();
-    for (Object obj : arr) {
-      Book book = (Book) obj;
-      out.println(book.toCsvString());
-    }
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("books.json")));
+
+    // JSON 형식의 문자열을 다룰 객체를 준비한다.
+    ObjectMapper mapper = new ObjectMapper();
+
+    // 1) 객체를 JSON 형식의 문자열로 생성한다.
+    // => ArrayList 에서 Board 배열을 꺼낸 후 JSON 문자열로 만든다.
+    String jsonStr = mapper.writeValueAsString(bookList.toArray()); 
+
+    // 2) JSON 형식으로 바꾼 문자열을 파일로 출력한다.
+    out.println(jsonStr);
 
     out.close();
-    return arr.length;
+    return bookList.size();
   }
 }
 

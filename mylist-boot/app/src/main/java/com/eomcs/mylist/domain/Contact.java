@@ -1,6 +1,6 @@
 package com.eomcs.mylist.domain;
 
-public class Contact {
+public class Contact implements java.io.Serializable {
   String name;
   String email;
   String tel;

@@ -1,12 +1,15 @@
 package com.eomcs.mylist.controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.eomcs.io.FileWriter2;
 import com.eomcs.mylist.domain.Contact;
 import com.eomcs.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController 
 public class ContactController {
@@ -17,14 +20,18 @@ public class ContactController {
     contactList = new ArrayList();
     System.out.println("ContactController() 호출됨!");
 
-    BufferedReader in2 = new BufferedReader(new FileReader("contacts.csv")); //주 객체에데코레이터 객체를 연결
+    try {
+      BufferedReader in = new BufferedReader(new FileReader("contacts.json"));
 
-    String line;
-    while ((line = in2.readLine()) != null) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
-      contactList.add(Contact.valueOf(line)); // 파일에서 읽은 한 줄의 CSV 데이터로 객체를 만든 후 목록에 등록한다.
+      // JSON 문자열을 다룰 객체 준비
+      ObjectMapper mapper = new ObjectMapper();
+      String jsonStr = in.readLine();
+      contactList = new ArrayList(mapper.readValue(jsonStr, Contact[].class));
+      in.close();
+
+    } catch (Exception e) {
+      System.out.println("게시글 데이터 로딩 중 오류 발생!");
     }
-
-    in2.close();
   }
 
   @RequestMapping("/contact/list")
@@ -72,16 +79,20 @@ public class ContactController {
 
   @RequestMapping("/contact/save")
   public Object save() throws Exception {
-    FileWriter2 out = new FileWriter2("contacts.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("contacts.json")));
 
-    Object[] arr = contactList.toArray();
-    for (Object obj : arr) {
-      Contact contact = (Contact) obj;
-      out.println(contact.toCsvString());
-    }
+    // JSON 형식의 문자열을 다룰 객체를 준비한다.
+    ObjectMapper mapper = new ObjectMapper();
+
+    // 1) 객체를 JSON 형식의 문자열로 생성한다.
+    // => ArrayList 에서 Board 배열을 꺼낸 후 JSON 문자열로 만든다.
+    String jsonStr = mapper.writeValueAsString(contactList.toArray()); 
+
+    // 2) JSON 형식으로 바꾼 문자열을 파일로 출력한다.
+    out.println(jsonStr);
 
     out.close();
-    return arr.length;
+    return contactList.size();
   }
 
   int indexOf(String email) {
@@ -94,7 +105,3 @@ public class ContactController {
     return -1;
   }
 }
-
-
-
-

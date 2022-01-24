@@ -1,12 +1,15 @@
 package com.eomcs.mylist.controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.eomcs.io.FileWriter2;
 import com.eomcs.mylist.domain.Todo;
 import com.eomcs.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController 
 public class TodoController {
@@ -15,14 +18,18 @@ public class TodoController {
 
   public TodoController() throws Exception {
     System.out.println("TodoController() 호출됨!");
-    BufferedReader in2 = new BufferedReader(new FileReader("todos.csv")); //주 객체에데코레이터 객체를 연결
 
-    String line;
-    while ((line = in2.readLine()) != null) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
-      todoList.add(Todo.valueOf(line)); 
+    try {
+      BufferedReader in = new BufferedReader(new FileReader("todos.json"));
+      ObjectMapper mapper = new ObjectMapper();
+      String jsonStr = in.readLine();
+      todoList = new ArrayList(mapper.readValue(jsonStr, Todo[].class));
+
+      in.close();
+
+    } catch (Exception e) {
+      System.out.println("게시글 데이터 로딩 중 오류 발생!");
     }
-
-    in2.close();
   }
 
   @RequestMapping("/todo/list")
@@ -70,16 +77,20 @@ public class TodoController {
 
   @RequestMapping("/todo/save")
   public Object save() throws Exception {
-    FileWriter2 out = new FileWriter2("todos.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("todos.json")));
 
-    Object[] arr = todoList.toArray();
-    for (Object obj : arr) {
-      Todo todo = (Todo) obj;
-      out.println(todo.toCsvString());
-    }
+    // JSON 형식의 문자열을 다룰 객체를 준비한다.
+    ObjectMapper mapper = new ObjectMapper();
+
+    // 1) 객체를 JSON 형식의 문자열로 생성한다.
+    // => ArrayList 에서 Board 배열을 꺼낸 후 JSON 문자열로 만든다.
+    String jsonStr = mapper.writeValueAsString(todoList.toArray()); 
+
+    // 2) JSON 형식으로 바꾼 문자열을 파일로 출력한다.
+    out.println(jsonStr);
 
     out.close();
-    return arr.length;
+    return todoList.size();
   }
 }
 
