@@ -10,6 +10,7 @@ public class Command {
     this.name = name;
     for (String value : values) {
       this.params.add(value);
+      //this 로 파라미터 
     }
   }
 
