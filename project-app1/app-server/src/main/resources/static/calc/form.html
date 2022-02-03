@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>게시글</title>
+</head>
+<body>
+
+<h1>새 게시글</h1>
+
+<form>
+<input id="x-a" type="text">
+<select id="x-op">
+  <option value="">연산자 선택</option>
+  <option>+</option>
+  <option>-</option>
+  <option>*</option>
+  <option>/</option>
+</select>
+<input id="x-b" type="text">
+<button id="x-do-btn" type="button">=</button>
+<input id="x-result" type="text">
+</form>
+
+<script type="text/javascript">
+  var xA = document.querySelector("#x-a");
+  var xB = document.querySelector("#x-b");
+  var xOp = document.querySelector("#x-op");
+  var xResult = document.querySelector("#x-result");
+  document.querySelector("#x-do-btn").onclick = function() {
+	  console.log(xA.value);
+	  console.log(xB.value);
+	  console.log(xOp.value);
+	  
+	  
+    if (xA.value == "" || xB.value == "") {
+      window.alert("값을 입력하세요");
+      return;
+    }
+   if (xOp.value==""){
+	   window.alert("연산자를 선택하세요.");
+   }
+
+    fetch(`/calc?op=${encodeURIComponent(xOp.value)}&a=${xA.value}&b=${xB.value}`)
+      .then(function(response) {
+        return response.text();
+      })
+      .then(function(text) {
+        xResult.value=text;
+        
+      });
+  };
+
+  
+  
+</script>
+
+</body>
+</html>
