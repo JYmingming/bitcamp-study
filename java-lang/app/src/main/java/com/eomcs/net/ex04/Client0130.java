@@ -15,7 +15,7 @@ public class Client0130 {
         PrintWriter out = new PrintWriter(socket.getOutputStream());
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-      System.out.println("서버와 연결되었음!");
+      System.out.println("서버와 연결되었음!!");
 
       String name = null;
       do {
