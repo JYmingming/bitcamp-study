@@ -27,8 +27,8 @@ public class CalcServer {
 
   static void processRequest(Socket socket) throws Exception {
     try (Socket socket2 = socket;
-        DataInputStream in = new DataInputStream(socket.getInputStream());
-        PrintStream out = new PrintStream(socket.getOutputStream());) {
+        DataInputStream in = new DataInputStream(socket2.getInputStream());
+        PrintStream out = new PrintStream(socket2.getOutputStream());) {
 
       // 작업 결과를 유지할 변수
       int result = 0;

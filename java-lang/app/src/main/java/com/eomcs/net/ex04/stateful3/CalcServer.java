@@ -19,12 +19,11 @@ public class CalcServer {
       this.socket = socket;
     }
 
+
     @Override
     public void run() {
       // JVM과 분리하여 별도로 실행할 코드를 이 메서드에 둔다.
       try {
-        processRequest(socket);
-      } catch (Exception e) {
         System.out.println("클라이언트 요청 처리 중 오류 발생!");
       } finally {
         System.out.println("클라이언트 연결 종료!");
