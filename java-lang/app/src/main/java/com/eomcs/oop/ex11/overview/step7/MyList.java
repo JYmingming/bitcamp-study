@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex11.overview.step2;
+package com.eomcs.oop.ex11.overview.step7;
 
 import java.util.Arrays;
 
@@ -41,36 +41,29 @@ public class MyList {
   }
 
   public Iterator iterator() {
-    return new ListIterator(this);
+
+    // anonymous class (익 클래스)
+    // 클래스 이름이 없다 
+    // 그래서 클래스를 정의한 후에 따로 인스턴스 생성할 수 없다.
+    //  클래스 정의와 인스턴스 생성 문장이 합쳐져 있다
+
+
+    return new Iterator() {
+      int cursor;
+      @Override
+      public boolean hasNext() {
+        return cursor < MyList.this.size();
+      }
+
+      @Override
+      public Object next() {
+        return MyList.this.get(cursor++);
+      }
+    };
+
+
+
   }
-
-  // static nested class(스태틱 중첩 클래스)
-  // - ListIterator는 MyList 클래스에서만 직접 사용된다.
-  // - 중첩 클래스 문법을 사용하여 명학하게 ListIterator의 사용범위를 제한한다.
-  //
-  static class ListIterator implements Iterator {
-
-    MyList list;
-    int cursor;
-
-    public ListIterator(MyList list) {
-      this.list = list;
-    }
-
-    @Override
-    public boolean hasNext() {
-      return cursor < list.size();
-    }
-
-    @Override
-    public Object next() {
-      return list.get(cursor++);
-    }
-  }
-
-
-
-
 }
 
 

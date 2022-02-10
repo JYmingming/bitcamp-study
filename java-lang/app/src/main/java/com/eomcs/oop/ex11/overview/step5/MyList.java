@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex11.overview.step2;
+package com.eomcs.oop.ex11.overview.step5;
 
 import java.util.Arrays;
 
@@ -41,35 +41,29 @@ public class MyList {
   }
 
   public Iterator iterator() {
-    return new ListIterator(this);
+    return new ListIterator();
   }
 
-  // static nested class(스태틱 중첩 클래스)
-  // - ListIterator는 MyList 클래스에서만 직접 사용된다.
-  // - 중첩 클래스 문법을 사용하여 명학하게 ListIterator의 사용범위를 제한한다.
+  // non-static nested class(논스태틱 중첩 클래스)
+  // - inner class 라고도 부른다.
+  // - ListIterator가 사용할 바깥 클래스 MyList의 인스턴스를 주소를 저장할 필드와 생성자가 자동으로 추가된다.
+  // - 기존의 static nested class 처럼 개발자가 직접 추가할 필요가 없다.
+  // - 바깥 클래스의 인스턴스를 사용하는 경우, static nested class로 만드는 것 보다 더 편리하다.
   //
-  static class ListIterator implements Iterator {
+  class ListIterator implements Iterator {
 
-    MyList list;
     int cursor;
-
-    public ListIterator(MyList list) {
-      this.list = list;
-    }
 
     @Override
     public boolean hasNext() {
-      return cursor < list.size();
+      return cursor < MyList.this.size();
     }
 
     @Override
     public Object next() {
-      return list.get(cursor++);
+      return MyList.this.get(cursor++);
     }
   }
-
-
-
 
 }
 

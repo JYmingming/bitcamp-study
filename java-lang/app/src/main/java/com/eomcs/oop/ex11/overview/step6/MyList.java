@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex11.overview.step2;
+package com.eomcs.oop.ex11.overview.step6;
 
 import java.util.Arrays;
 
@@ -41,34 +41,30 @@ public class MyList {
   }
 
   public Iterator iterator() {
-    return new ListIterator(this);
+
+    // local class (로컬 클래스)
+    // - 메서드나 특정 블록 안에서만 사용될 클래스라면 
+    //   그 메서드나 블록에서 클래스를 정의함으로써
+    //   명시적으로 사용범위를 더 제안 할 수 있다. 
+
+    //- 단지 사용범위를 더 제한한 것에 불과하다.
+    // - 로컬 클래스에도 바깥 클래스의 인스턴스 주소를 저장할 필드와 생성자가 자동으로 추가된다.
+    class ListIterator implements Iterator {
+
+      int cursor;
+
+      @Override
+      public boolean hasNext() {
+        return cursor < MyList.this.size();
+      }
+
+      @Override
+      public Object next() {
+        return MyList.this.get(cursor++);
+      }
+    }
+    return new ListIterator();
   }
-
-  // static nested class(스태틱 중첩 클래스)
-  // - ListIterator는 MyList 클래스에서만 직접 사용된다.
-  // - 중첩 클래스 문법을 사용하여 명학하게 ListIterator의 사용범위를 제한한다.
-  //
-  static class ListIterator implements Iterator {
-
-    MyList list;
-    int cursor;
-
-    public ListIterator(MyList list) {
-      this.list = list;
-    }
-
-    @Override
-    public boolean hasNext() {
-      return cursor < list.size();
-    }
-
-    @Override
-    public Object next() {
-      return list.get(cursor++);
-    }
-  }
-
-
 
 
 }

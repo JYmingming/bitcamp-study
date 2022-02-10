@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex11.overview.step2;
+package com.eomcs.oop.ex11.overview.step4;
 
 import java.util.Arrays;
 
@@ -67,9 +67,6 @@ public class MyList {
       return list.get(cursor++);
     }
   }
-
-
-
 
 }
 

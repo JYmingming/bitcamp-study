@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex11.overview.step2;
+package com.eomcs.oop.ex11.overview.step3;
 
 public class MyQueue extends MyList {
 
@@ -13,6 +13,10 @@ public class MyQueue extends MyList {
     return remove(0);
   }
 
+  @Override
+  public Iterator iterator() {
+    return new QueueIterator(this);
+  }
 }
 
 
