@@ -4,6 +4,7 @@ package com.eomcs.oop.ex11.c;
 class B3 {
 
   // 인스턴스 멤버
+
   int v1 = 10;
 
   class X {
@@ -18,6 +19,7 @@ class B3 {
     }
   }
 }
+
 
 public class Exam0230 {
 
@@ -41,4 +43,7 @@ public class Exam0230 {
     System.out.println("--------------------");
   }
 
+
 }
+
+

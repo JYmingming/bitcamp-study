@@ -28,6 +28,14 @@ public class Exam0111 {
       }
     };
     obj2.print();
+
+    new A() {
+      @Override
+      public void print() {
+        System.out.println("Hello!");
+      }
+    }.print();
+
   }
 }
 
