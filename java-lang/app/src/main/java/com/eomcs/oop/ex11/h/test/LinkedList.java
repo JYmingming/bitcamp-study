@@ -95,7 +95,42 @@ public class LinkedList {
 
     return node;
   }
-}
+
+
+  private static class Node{
+    Node prev;
+    Object value;
+    Node next;
+
+    public Node(Object value) {
+      this.value = value;
+    }
+
+    public Node(Object value, Node prev, Node next) {
+      this.value = value;
+      this.prev = prev;
+      this.next = next;
+    }
+  }
+  // Non-static Nested class 활용 예 
+  // 특정 클래스의 안에서만 사용된 때ㅑ 
+  // 바깥 클래스의 인스턴스 멤버를 사용할 땨
+
+  private class Listiterator implements Iterator{
+    int cusor;
+
+    @Override
+    public boolean hasNext() {
+      // TODO Auto-generated method stub
+      return cusor < LinkedList.this.size();
+    }
+    @Override
+    public Object next() {
+      // TODO Auto-generated method stub
+      return ListkedList.this.get(cusor++);
+    }
+  }
+
 
 
 

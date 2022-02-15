@@ -1,7 +1,7 @@
 // 아규먼트에 람다(lambda) 활용
 package com.eomcs.oop.ex12;
 
-public class Exam0310 {
+public class Exam0310x {
 
   static interface Player {
     void play();

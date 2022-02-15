@@ -21,7 +21,15 @@ public class Exam0160 {
     m1(() -> System.out.println("파라미터"));
   }
 
+  A obj4 = () -> System.out.println("dd");
+
   static void m1(final A obj) {
     obj.print();
   }
+
+  static A m2() {
+    return () -> System.out.println("리턴문장");
+  }
+
+
 }
