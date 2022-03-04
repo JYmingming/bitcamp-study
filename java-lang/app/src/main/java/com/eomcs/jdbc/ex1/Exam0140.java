@@ -33,6 +33,12 @@ public class Exam0140 {
     try {
       // Driver 구현체를 로딩하지 않는다!
 
+      // => DriverManager의 getDrriver()를 호출 하여 java.sql.Driver 구현체를 달라고요구할 때 
+      //    1)JDBC 드라이버 초기화 절차를 수행하지 않았으면,
+      //        -CLASSPATH 경로에 설정된 모든 *.jar파일에대해
+      //        서비스 로더 규칙에 따라 Driver 구현체를 찾아서 로딩한다.
+      //        - JVM 프로퍼티 "jdbc.drivers" 이름으로 등록된 
+
       // DriverManager에 자동 등록된 것을 확인해보자!
       java.sql.Driver driver = DriverManager.getDriver("jdbc:mariadb://");
       System.out.println(driver);

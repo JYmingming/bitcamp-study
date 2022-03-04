@@ -58,17 +58,7 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/2.7.4/f4699a345b9f0d44075a1da62610260cfbf68c6e/mariadb-java-client-2.7.4-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/2.7.4/6d6ea84c870837afa63f5f55efde211a84cf2897/mariadb-java-client-2.7.4.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc11/21.3.0.0/bc15f00ebacbeb0669f0ed925917c177912db7af/ojdbc11-21.3.0.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc11/21.3.0.0/387d2741de2dea00dd8bd7af451c4e3801320832/ojdbc11-21.3.0.0.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.microsoft.sqlserver/mssql-jdbc/9.4.0.jre11/a2e003fbb716846848193ebd6e639360bcb33214/mssql-jdbc-9.4.0.jre11-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.microsoft.sqlserver/mssql-jdbc/9.4.0.jre11/a6f15b77f9a37aaaaeec829a5040efd1ddec2261/mssql-jdbc-9.4.0.jre11.jar">
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/3.0.3/b8f02d6ce0aa5a4c29fad58970ead9a08805f7e0/mariadb-java-client-3.0.3-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/3.0.3/d88d6d447b8d6194bd3895c96abedd21b4d83355/mariadb-java-client-3.0.3.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -78,12 +68,12 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.13.0/1c78424885821d9d76dea840373e4c6ec3194bfb/jackson-annotations-2.13.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.13.0/15be89db6609bd6fda3dc309bacf0318a312c03f/jackson-annotations-2.13.0.jar">
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.13.1/7d167558a509af98d1ce5610ba142735a6990faa/jackson-annotations-2.13.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.13.1/1cbcbe4623113e6af92ccaa89884a345270f1a87/jackson-annotations-2.13.1.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.13.0/26783a31fe3e4b63f2799dda9266747d0621ffc6/jackson-core-2.13.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.13.0/e957ec5442966e69cef543927bdc80e5426968bb/jackson-core-2.13.0.jar">
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.13.1/2d0c5c66616d6a57ad6282078249df816b3b2ed2/jackson-core-2.13.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.13.1/51ae921a2ed1e06ca8876f12f32f265e83c0b2b8/jackson-core-2.13.1.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -99,6 +89,16 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/30.1.1-jre/fac882f35fd501581954dcaffa410ee4b5cd8d1b/guava-30.1.1-jre-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/30.1.1-jre/87e0fd1df874ea3cbe577702fe6f17068b790fd8/guava-30.1.1-jre.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc11/21.5.0.0/bc15f00ebacbeb0669f0ed925917c177912db7af/ojdbc11-21.5.0.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.oracle.database.jdbc/ojdbc11/21.5.0.0/3e588fed4618a39c7d655bfc1159ecb57fabc217/ojdbc11-21.5.0.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.microsoft.sqlserver/mssql-jdbc/10.2.0.jre11/f6f0b3f4c092631f26f6cae1bbcb2169d3591b89/mssql-jdbc-10.2.0.jre11-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.microsoft.sqlserver/mssql-jdbc/10.2.0.jre11/281c4ff3de0f5a36bf77951a0a8ff829469a41d1/mssql-jdbc-10.2.0.jre11.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -128,7 +128,7 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.6/9376f5559455b8fe1b15308d3ad9c545f6905b1a/commons-pool-1.6-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.6/4572d589699f09d866a226a14b7f4323c6d8f040/commons-pool-1.6.jar">
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.5.4/3e226507788e09f02eef641e868624fb823af6e6/commons-pool-1.5.4-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.5.4/75b6e20c596ed2945a259cea26d7fadd298398e6/commons-pool-1.5.4.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -179,13 +179,7 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/2.2/260c1224a39af35b0dbf85201647125f25f1b40d/hamcrest-core-2.2-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/2.2/3f2bd07716a31c395e2837254f37f21f0f0ab24b/hamcrest-core-2.2.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest/2.2/a0a13cfc629420efb587d954f982c4c6a100da25/hamcrest-2.2-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest/2.2/1820c0968dba3a11a1b30669bb1f01978a91dedc/hamcrest-2.2.jar">
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="test"/>
 			<attribute name="test" value="true"/>
