@@ -28,6 +28,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/3.0.3/b8f02d6ce0aa5a4c29fad58970ead9a08805f7e0/mariadb-java-client-3.0.3-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.mariadb.jdbc/mariadb-java-client/3.0.3/d88d6d447b8d6194bd3895c96abedd21b4d83355/mariadb-java-client-3.0.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/2.6.0/daef8974a213bf10691f4c096b92ddb822ee7d9a/spring-boot-starter-web-2.6.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/2.6.0/483a28b67c507a21b8c4ff62d88cd811911e5641/spring-boot-starter-web-2.6.0.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>

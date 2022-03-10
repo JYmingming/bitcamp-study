@@ -1,26 +1,40 @@
-# 07.7 파일 API 활용: 데이터를 JSON 형식으로 읽고 쓰기
+# 10.1 데이터 관리를 DBMS에게 맡기기 : JDBC API 사용
 
-- jackson-databind 를 사용하여 JSON 형식으로 데이터를 읽고 쓰기
+- DBMS를 사용하여 데이터를 저장하고 조회하기
 
 ## 백엔드 개발 실습
 
-### 0단계 - jackson-databind 라이브러리를 프로젝트에 추가한다.
+### 1단계 - 프로젝트에 JDBC Driver 추가한다.
 
-- Spring Boot는 기본으로 포함하고 있다.
+- 그래이들 빌드 스크립트 파일(build.gradle) 변경
+  - mariadb jdbc driver 추가
+  - `$ gradle eclipse` 실행
+  - 이클립스 IDE에서 프로젝트 정보 갱신
 
-### 1단계 - ObjectMapper 클래스를 사용하여 객체를 JSON 형식으로 출력한다.
+### 2단계 - 게시글을 저장할 테이블 생성
 
-- com.eomcs.mylist.controller.XxxController 클래스 변경
-  - save() 메서드 변경: ObjectMapper 도구를 사용하여 인스턴스를 JSON 형식의 문자열로 바꿔 출력한다.
+- mariadb 클라이언트를 사용하여 테이블을 생성한다.
+  - primary key 제약조건과 자동 증가 설정을 추가한다.
 
-### 2단계 - 데코레이터 ObjectInputStream을 사용하여 직렬화 데이터를 읽는다.
+```
+create table ml_board (
+    board_no int not null,
+    title varchar(255) not null,
+    content text not null,
+    created_date datetime default now(),
+    view_count int default 0
+);
 
-- com.eomcs.util.ArrayList 클래스 변경
-  - jackson-databind의 ObjectMapper는 프로퍼티만 입출력한다.
-  - 현재 ArrayList 클래스에는 프로퍼티가 없다.
-  - 
-- com.eomcs.mylist.controller.XxxController 클래스 변경
-  - 생성자 변경: ObjectInputStream 도구를 사용하여 serialize 데이터를 꺼꾸로 객체로 복원한다.
+alter table ml_board
+  add constraint primary key(board_no);
+
+alter table ml_board
+  modify column board_no int not null auto_increment;
+```
+
+### 3단계 - JdbcXxxDao 클래스를 생성한다.
+
+- JDBC Driver를 이용하여 MariaDB를 통해 데이터를 처리한다.
 
 
 ## 프론트엔드 개발 실습
