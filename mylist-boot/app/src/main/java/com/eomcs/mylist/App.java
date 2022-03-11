@@ -1,5 +1,6 @@
 package com.eomcs.mylist;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class App {
+
+  @Value("${spring.datasource.driver-class-name}")
+  String driverClassName;
+  @Value("${spring.datasource.url}")
+  String url;
+  @Value("${spring.datasource.username}")
+  String username;
+  @Value("${spring.datasource.password}")
+  String password;
+
+
+
 
   public static void main(String[] args) {
     SpringApplication.run(App.class, args);
