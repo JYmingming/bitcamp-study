@@ -1,12 +1,15 @@
 package com.eomcs.mylist;
 
 import javax.sql.DataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +42,20 @@ public class App {
       throw new RuntimeException(e);
     }
   }
+
+  //
+  public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+    SqlSessionFactoryBean sqlsessionFactoryBean = new SqlSessionFactoryBean();
+    // 1) SQL을실행할 때 사용할 DB커넥션 풀을 주입한다.
+    sqlsessionFactoryBean.setDataSource(dataSource);
+
+    // 2) SQl 이 들어있는 파일의 위치를 설정한다.
+    PathMatchingResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
+    sqlsessionFactoryBean.setMapperLocations(resourceResolver.getResources("classpath:com/eomcs/mylist/dao/*.xml"));
+
+    return sqlsessionFactoryBean.getObject();
+  }
+
 
   public static void main(String[] args) {
     SpringApplication.run(App.class, args);
