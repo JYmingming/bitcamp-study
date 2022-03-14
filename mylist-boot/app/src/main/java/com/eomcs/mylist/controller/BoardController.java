@@ -17,18 +17,18 @@ public class BoardController {
   BoardDao boardDao;
 
   @RequestMapping("/board/list")
-  public Object list(){
-    return boardDao.findAll(); 
+  public Object list() {
+    return boardDao.findAll();
   }
 
   @RequestMapping("/board/add")
-  public Object add(Board board){
+  public Object add(Board board) {
     return boardDao.insert(board);
   }
 
 
   @RequestMapping("/board/get")
-  public Object get(int no){
+  public Object get(int no) {
     Board board = boardDao.findByNo(no);
     if (board == null) {
       return "";
@@ -38,12 +38,12 @@ public class BoardController {
   }
 
   @RequestMapping("/board/update")
-  public Object update(Board board){
+  public Object update(Board board) {
     return boardDao.update(board);
   }
 
   @RequestMapping("/board/delete")
-  public Object delete(int no){
+  public Object delete(int no) {
     return boardDao.delete(no);
   }
 }

@@ -1,44 +1,30 @@
-# 10.1 데이터 관리를 DBMS에게 맡기기 : JDBC API 사용
+# 10.2 데이터 관리를 DBMS에게 맡기기 : DB 커넥션풀을 이용하여 DB 커넥션 재활용하기
 
-- DBMS를 사용하여 데이터를 저장하고 조회하기
+- DB 커넥션을 재활용하는 방법
 
 ## 백엔드 개발 실습
 
-### 1단계 - 프로젝트에 JDBC Driver 추가한다.
+### 1단계 - application.properties 파일에 DB 연결 정보를 추가한다.
 
-- 그래이들 빌드 스크립트 파일(build.gradle) 변경
-  - mariadb jdbc driver 추가
-  - `$ gradle eclipse` 실행
-  - 이클립스 IDE에서 프로젝트 정보 갱신
-
-### 2단계 - 게시글을 저장할 테이블 생성
-
-- mariadb 클라이언트를 사용하여 테이블을 생성한다.
-  - primary key 제약조건과 자동 증가 설정을 추가한다.
-
+- /src/main/resources/application.properties 파일 변경
 ```
-create table ml_board (
-    board_no int not null,
-    title varchar(255) not null,
-    content text not null,
-    created_date datetime default now(),
-    view_count int default 0
-);
-
-alter table ml_board
-  add constraint primary key(board_no);
-
-alter table ml_board
-  modify column board_no int not null auto_increment;
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://localhost:3306/studydb
+spring.datasource.username=study
+spring.datasource.password=1111
 ```
 
-### 3단계 - JdbcXxxDao 클래스를 생성한다.
+### 2단계 - DB 커넥션풀 역할을 수행할 객체를 준비한다.
 
-- JDBC Driver를 이용하여 MariaDB를 통해 데이터를 처리한다.
+- com.eomcs.mylist.App 클래스 변경
+  - DataSource 객체를 생성하는 메서드를 정의한다.
+  - @Bean 애노테이션을 붙여 객체 생성 메서드로 지정한다.
 
+### 3단계 - 게시글 데이터 처리 객체(DAO)에서 DataSource를 사용하여 DB에 연결한다.
+
+- com.eomcs.mylist.dao.mariadb.BoardDaoImpl 클래스 변경
 
 ## 프론트엔드 개발 실습
-
 
 
 
