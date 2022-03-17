@@ -2,15 +2,15 @@ package com.eomcs.mylist.domain;
 
 import java.sql.Date;
 
-public class Book{
+public class Book {
   int no;
   String title;
   String author;
   String press;
+  String feed;
+  Date readDate;
   int page;
   int price;
-  Date readDate;
-  String feed;
 
   @Override
   public String toString() {

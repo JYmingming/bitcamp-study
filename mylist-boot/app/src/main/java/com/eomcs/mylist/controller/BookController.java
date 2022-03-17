@@ -32,7 +32,6 @@ public class BookController {
 
   @RequestMapping("/book/update")
   public Object update(Book book) throws Exception{
-
     return bookDao.update(book);
   }
 

@@ -5,7 +5,6 @@
   
 <mapper namespace="com.eomcs.mylist.dao.BookDao">
 
-  
   <resultMap type="book" id="bookMap">
     <id column="book_no" property="no"/>
     <result column="title" property="title"/>
@@ -17,7 +16,7 @@
     <result column="price" property="price"/>
   </resultMap>
 
-   <select id="countAll" resultType="int">
+  <select id="countAll" resultType="int">
     select count(*) from ml_book
   </select>
   
@@ -33,23 +32,19 @@
       title asc
   </select>
   
-  <!-- 
-    parameterType => 메서드의 파라미터 타입 및 개수와 일치해야 한다.
-   -->
- 
-
   <insert id="insert" parameterType="book">
     insert into ml_book(title,author,press,feed,read_date,page,price) 
     values(#{title},#{author},#{press},#{feed},#{readDate},#{page},#{price})
   </insert>
- 
- <select id="findByNo" resultMap="bookMap" parameterType="int">
+  
+  <select id="findByNo" resultMap="bookMap" parameterType="int">
     select 
       book_no,
       title,
       author,
       press,
       feed,
+      read_date,
       page,
       price
     from 
@@ -57,26 +52,24 @@
     where 
       book_no=#{no}
   </select>
-  
+
   <update id="update" parameterType="book">
     update ml_book set 
       title=#{title}, 
-      author=#{author}, 
-      press=#{press}, 
-      feed=#{feed}, 
+      author=#{author},
+      press=#{press},
+      feed=#{feed},
       read_date=#{readDate},
-      page=#{page}, 
-      price=#{price} 
+      page=#{page},
+      price=#{price}
     where 
       book_no=#{no}
   </update>
-  
 
   <delete id="delete" parameterType="int">
     delete from ml_book 
     where book_no=#{no}
   </delete>
-
 
 </mapper>
 

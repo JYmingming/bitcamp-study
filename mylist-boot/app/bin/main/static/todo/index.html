@@ -29,20 +29,22 @@
 
 <input type="text" id="x-title-input">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
   "use strict"
 
-  var titleInput = document.querySelector("#x-title-input");
-  titleInput.style["display"] = "none";
+  var titleInput = $("#x-title-input");
+  titleInput.css("display", "none");
 
-  var tbody = document.querySelector("#x-todo-table tbody");
+  var tbody = $("#x-todo-table tbody");
 
-  document.querySelector("#x-todo-input").onkeyup = function(e) {
+  $("#x-todo-input").keyup(function(e) {
+
     if (e.keyCode == 27) {
-      e.target.value = "";
+      $(e.target).val("");
 
     } else if (e.keyCode == 13) {
-      if (e.target.value == "") {
+      if ($(e.target).val() == "") {
         window.alert("필수 입력 항목이 비어 있습니다.");
         return;
       }
@@ -56,7 +58,7 @@
           location.reload();
         });
     }
-  };
+  });
 
   fetch("/todo/list")
     .then(function(response) {
@@ -64,26 +66,25 @@
     })
     .then(function(todoList) {
       console.log(todoList);
-      for (var i = 0; i < todoList.length; i++) {
-        var tr = document.createElement("tr");
-        tr.setAttribute("data-no", i);
+      for (var todo of todoList) {
         var checkedOption = "";
         var titleTdOption = "";
-        if (todoList[i].done) {
+        if (todo.done) {
           checkedOption = "checked";
           titleTdOption = "class='todo-checked'";
         }
-        tr.innerHTML = `<td><input type="checkbox" ${checkedOption} onchange="checkTodo(${i}, event.target.checked)"></td>
-        <td class="todo-title"><span ${titleTdOption}>${todoList[i].title}</span></td>
-        <td><button type="button" onclick="updateTodo(${i})">변경</button></td>
-        <td><button type="button" onclick="deleteTodo(${i})">삭제</button></td>`;
-        tbody.appendChild(tr);
+        $("<tr>").attr("data-no", todo.no)
+                 .html(`<td><input type="checkbox" ${checkedOption} onchange="checkTodo(${todo.no}, event.target.checked)"></td>
+                        <td class="todo-title"><span ${titleTdOption}>${todo.title}</span></td>
+                        <td><button type="button" onclick="updateTodo(${todo.no})">변경</button></td>
+                        <td><button type="button" onclick="deleteTodo(${todo.no})">삭제</button></td>`)
+                 .appendTo(tbody);
       }
-      document.querySelector("#x-todo-input").focus();
+      $("#x-todo-input").focus();
     });
 
  function deleteTodo(no) {
-   fetch(`/todo/delete?index=${no}`)
+   fetch(`/todo/delete?no=${no}`)
      .then(function(response) {
        return response.json();
      })
@@ -98,7 +99,7 @@
 
  function checkTodo(no, checked) {
    console.log(no, checked);
-   fetch(`/todo/check?index=${no}&done=${checked}`)
+   fetch(`/todo/check?no=${no}&done=${checked}`)
      .then(function(response) {
        return response.json();
      })
@@ -106,11 +107,11 @@
        if (result == 0) {
          window.alert("변경하지 못했습니다!");
        } else {
-         var titleSpan = document.querySelector(`tr[data-no="${no}"] > td.todo-title > span`);
+         var titleSpan = $(`tr[data-no="${no}"] > td.todo-title > span`);
          if (checked) {
-           titleSpan.classList.add("todo-checked");
+           titleSpan.addClass("todo-checked");
          } else {
-           titleSpan.classList.remove("todo-checked")
+           titleSpan.removeClass("todo-checked")
          }
        }
      });
@@ -118,28 +119,29 @@
 
  function updateTodo(no) {
    // 현재 Todo 항목을 편집 중인 상태에서 변경 버튼을 눌렀다면
-   if (titleInput.parentNode instanceof HTMLTableCellElement) {
+   
+   if (titleInput.parent()[0] instanceof HTMLTableCellElement) {
      // 다른 항목을 편집하기 위해 이동하기 전에 편집 전의 상태로 되돌린다.
-     titleInput.parentNode.querySelector("span").style["display"] = "";
+     titleInput.parent().find("span").css("display", "");
    }
-   var titleTd = document.querySelector(`tr[data-no="${no}"] > td.todo-title`);
-   var titleSpan = titleTd.querySelector("span");
-   titleSpan.style["display"] = "none";
-   titleInput.value = titleSpan.innerHTML;
-   titleInput.setAttribute("data-no", no);
-   titleTd.appendChild(titleInput);
-   titleInput.style["display"] = "";
+   var titleTd = $(`tr[data-no="${no}"] > td.todo-title`);
+   var titleSpan = titleTd.find("span");
+   titleSpan.css( "display", "none" );
+   titleInput.val( titleSpan.html() );
+   titleInput.attr("data-no", no);
+   titleTd.append(titleInput);
+   titleInput.css("display", "");
  }
 
- titleInput.onkeyup = function(e) {
-   var no = titleInput.getAttribute("data-no");
-   var titleSpan = titleInput.parentNode.querySelector("span");
-   var originTitle = titleSpan.innerHTML;
+ titleInput.keyup(function(e) {
+   var no = titleInput.attr("data-no");
+   var titleSpan = titleInput.parent().find("span");
+   var originTitle = titleSpan.html();
 
    if (e.keyCode == 27) { // ESC 키를 눌러 편집을 취소한다면
      cancelTodoEditing();
    } else if (e.keyCode == 13 && titleInput.value != "" && originTitle != titleInput.value) {
-     fetch(`/todo/update?index=${no}&title=${titleInput.value}`)
+     fetch(`/todo/update?no=${no}&title=${titleInput.value}`)
        .then(function(response) {
          return response.json();
        })
@@ -148,17 +150,17 @@
            window.alert("변경하지 못했습니다!");
          } else {
            console.log("변경했습니다.");
-           titleSpan.innerHTML = titleInput.value;
+           titleSpan.html( titleInput.val() );
            cancelTodoEditing();
          }
        });
    }
- };
+ });
 
  function cancelTodoEditing() {
-   titleInput.parentNode.querySelector("span").style["display"] = "";
-   titleInput.style["display"] = "none";
-   document.body.appendChild(titleInput);
+   titleInput.parent().find("span").css("display", "");
+   titleInput.css("display", "none");
+   $(document.body).append(titleInput);
  }
 </script>
 
