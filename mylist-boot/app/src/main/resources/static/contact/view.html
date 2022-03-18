@@ -10,7 +10,26 @@
 
 <form>
 이름*: <input id="x-name" type="text"><br>
-전화*: <input id="x-tel" type="text"><br>
+<div class="x-tel-div">
+전화*: <select>
+        <option value="1">전화</option>
+        <option value="2">팩스</option>
+        <option value="3">휴대전화</option>
+        <option value="4">직장전화</option>
+        <option value="5">직장팩스</option>
+       </select> 
+       <input type="text">
+</div>
+<div class="x-tel-div">
+전화*: <select>
+        <option value="1">전화</option>
+        <option value="2">팩스</option>
+        <option value="3">휴대전화</option>
+        <option value="4">직장전화</option>
+        <option value="5">직장팩스</option>
+       </select> 
+       <input type="text">
+</div>
 이메일*: <input id="x-email" type="text"><br>
 회사: <input id="x-company" type="text"><br>
 별표(*) 항목은 필수 입력입니다.<br>
@@ -45,8 +64,8 @@
 
   var xName = document.querySelector("#x-name");
   var xEmail = document.querySelector("#x-email");
-  var xTel = document.querySelector("#x-tel");
   var xCompany = document.querySelector("#x-company");
+  var xTelDivList = document.querySelectorAll(".x-tel-div");
 
   // 3) 서버에서 데이터 가져오기
   fetch(`/contact/get?no=${no}`)
@@ -57,17 +76,33 @@
       // 4) 연락처 상세 정보를 화면에 출력한다.
       xName.value = contact.name;
       xEmail.value = contact.email;
-      xTel.value = contact.tel;
       xCompany.value = contact.company;
+      for (var i = 0; i < contact.tels.length; i++) {
+        var xTelType = xTelDivList[i].querySelector("select");
+        var xTel = xTelDivList[i].querySelector("input");
+        
+        xTelType.value = contact.tels[i].telTypeNo;
+        xTel.value = contact.tels[i].tel;
+      }
     });
 
   document.querySelector("#x-update-btn").onclick = function() {
-    if (xName.value == "" || xTel.value == "") {
+    var firstTel = xTelDivList[0].querySelector("input"); // 첫번째 전화번호
+    if (xName.value == "" || xEmail.value == "" || firstTel.value == "") {
       window.alert("필수 입력 항목이 비어 있습니다.");
       return;
     }
 
-    fetch(`/contact/update?no=${no}&name=${xName.value}&email=${xEmail.value}&tel=${xTel.value}&company=${xCompany.value}`)
+    var qs = `no=${no}&name=${xName.value}&email=${xEmail.value}&company=${xCompany.value}`;
+    for (var xTelDiv of xTelDivList) {
+      var xTelType = xTelDiv.querySelector("select");
+      var xTel = xTelDiv.querySelector("input");
+      
+      qs += `&tel=${xTelType.value}_${xTel.value}`;
+    }
+    console.log(qs);
+      
+    fetch(`/contact/update?${qs}`)
       .then(function(response) {
         return response.text();
       })
