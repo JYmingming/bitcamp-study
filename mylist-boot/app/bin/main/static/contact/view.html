@@ -78,6 +78,7 @@
       xEmail.value = contact.email;
       xCompany.value = contact.company;
       for (var i = 0; i < contact.tels.length; i++) {
+    	  //dd
         var xTelType = xTelDivList[i].querySelector("select");
         var xTel = xTelDivList[i].querySelector("input");
         
@@ -127,6 +128,14 @@
       });
   };
 
+  document.querySelector("#x-add-tel-btn").onclick = function() {
+	    var telDiv = xTelDivContainer.querySelector(".x-tel-div").cloneNode(true);
+	    telDiv.querySelector("select").value = 1;
+	    telDiv.querySelector("input").value = "";
+	    xTelDivContainer.appendChild(telDiv);
+	  };
+  
+  
 </script>
 
 </body>
