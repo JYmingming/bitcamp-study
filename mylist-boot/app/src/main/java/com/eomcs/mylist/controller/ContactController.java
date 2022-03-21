@@ -2,6 +2,9 @@ package com.eomcs.mylist.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.dao.ContactDao;
@@ -14,6 +17,9 @@ public class ContactController {
   @Autowired
   ContactDao contactDao;
 
+  @Autowired
+  TransactionTemplate transactionTemplate;
+
   @RequestMapping("/contact/list")
   public Object list() {
     List<Contact> contacts = contactDao.findAll();
@@ -25,16 +31,29 @@ public class ContactController {
 
   @RequestMapping("/contact/add")
   public Object add(Contact contact, String[] tel) throws Exception {
-    contactDao.insert(contact);
-    for (int i = 0; i < tel.length; i++) {
-      String[] value = tel[i].split("_");
-      if (value[1].length() == 0) {
-        continue;
+
+
+    class ContactAddtransaction implements TransactionCallback{
+
+      @Override
+      public Object doInTransaction(TransactionStatus status) {
+        contactDao.insert(contact);
+        for (int i = 0; i < tel.length; i++) {
+          String[] value = tel[i].split("_");
+          if (value[1].length() == 0) {
+            continue;
+          }
+          contactDao.insertTel(new ContactTel(contact.getNo(), Integer.parseInt(value[0]), value[1]));
+        }
+        return 1;
       }
-      contactDao.insertTel(new ContactTel(contact.getNo(), Integer.parseInt(value[0]), value[1]));
     }
+
+
+    transactionTemplate.execute(new ContactAddtransaction());
     return 1;
   }
+
 
   @RequestMapping("/contact/get")
   public Object get(int no) {
@@ -52,7 +71,7 @@ public class ContactController {
     if (count > 0) {
       contactDao.deleteTelByContactNo(contact.getNo());
       for (int i = 0; i < tel.length; i++) {
-        String[] value = tel[i].split(",");
+        String[] value = tel[i].split("_");
         if (value[1].length() == 0) {
           continue;
         }
