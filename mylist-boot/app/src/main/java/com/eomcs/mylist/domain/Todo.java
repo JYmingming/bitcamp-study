@@ -5,6 +5,13 @@ public class Todo {
   String title;
   boolean done;
 
+  public Todo() {}
+
+  public Todo(int no, boolean done) {
+    this.no = no;
+    this.done = done;
+  }
+
   @Override
   public String toString() {
     return "Todo [no=" + no + ", title=" + title + ", done=" + done + "]";

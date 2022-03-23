@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Contact;
 import com.eomcs.mylist.domain.ContactTel;
-import com.eomcs.mylist.service.ContactServiceTransaction;
+import com.eomcs.mylist.service.ContactService;
 
 @RestController 
 public class ContactController {
 
   @Autowired
-  ContactServiceTransaction contactService;
+  ContactService contactService; // 클래스 대신 인터페이스를 지정한다.
 
   @RequestMapping("/contact/list")
   public Object list() {

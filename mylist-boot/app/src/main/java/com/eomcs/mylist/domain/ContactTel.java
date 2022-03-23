@@ -14,7 +14,7 @@ public class ContactTel {
   }
 
   public ContactTel(int contactNo, int telTypeNo, String tel) {
-    this(telTypeNo,tel);
+    this(telTypeNo, tel);
     this.contactNo = contactNo;
   }
 

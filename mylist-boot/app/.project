@@ -11,6 +11,10 @@
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments/>
 		</buildCommand>
+		<buildCommand>
+			<name>org.springframework.ide.eclipse.boot.validation.springbootbuilder</name>
+			<arguments/>
+		</buildCommand>
 	</buildSpec>
 	<linkedResources/>
 	<filteredResources/>
