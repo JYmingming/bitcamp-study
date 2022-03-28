@@ -1,29 +1,40 @@
-### 15.1 Mybatis 고급 기능 활용 : 테이블 조인과 동적 SQL 다루기
+### 16.1 파일 업로드 : 자바스크립트 빌트인 객체 사용하기
 
-- 테이블을 조인하여 select 한 결과를 객체에 한 번에 받기
-- 조건문 반복문을 이용하여 SQL을 동적으로 다루기
+- AJAX를 이용하여 파일 업로드 구현하기
 
 ## 백엔드 개발 실습
 
-### 1단계 - 테이블 조인 결과를 한 번에 받는다.
+### 1단계 - 도서록 테이블에 책 사진 파일 이름을 저장할 컬럼을 추가한다.
 
-- /src/main/resources/com/eomcs/mylist/dao/ContactDao.xml 변경
-  - `contactMap` resultMap 변경
-  - `findAll` select 문 변경
-  - `findByNo` select 문 변경
-- com.eomcs.mylist.service.impl.DefaultContactService 클래스 변경
-  - list(), get() 메서드 변경
+```
+alter table ml_book
+  add column photo varchar(255);
+```
 
-### 2단계 - 동적 SQL 문을 생성한다.
+### 2단계 - 도메인 클래스(값 객체; Value Object; VO)에 책 사진 파일 이름을 저장할 필드를 추가한다.
 
-- /src/main/resources/com/eomcs/mylist/dao/ContactDao.xml 변경
-  - `insertTels` insert 문 추가
-- com.eomcs.mylist.dao.ContactDao 인터페이스 변경
-  - `insertTels()` 메서드 추가
-- com.eomcs.mylist.service.impl.DefaultContactService 클래스 변경
-  - add(), update() 메서드 변경
+- com.eomcs.mylist.domain.Book 클래스 변경
+
+
+### 3단계 - SQL Mapper 파일을 변경한다.
+
+- /src/main/resources/com/eomcs/mylist/dao/BookDao.xml 파일 변경
+  - `resultMap` 태그에 phoho 컬럼 매핑 정보 추가
+  - `findAll`, `findByNo`, `update`, `insert` SQL 문에 `phoho` 컬럼 추가
+
+### 4단계 - 사진 파일 업로드 기능을 페이지 컨트롤러에 추가한다.
+
+- com.eomcs.mylist.controller.BookController 클래스 변경
+  - `add()`, `update()` 메서드에 파일업로드 기능 추가
+
+
 
 ## 프론트엔드 개발 실습
 
+### 1단계 - 입력 화면에 사진 항목을 추가한다.
+
+- /static/book/form.html 변경
+  - 사진 파일을 업로드할 input 태그 추가
+  - POST 요청으로 책 정보 및 사진 파일을 업로드 한다.
 
 #

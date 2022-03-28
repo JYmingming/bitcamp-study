@@ -30,9 +30,15 @@
     })
     .then(function(books) {
       for (var book of books) {
+        
+        if(book.photo==null){
+        	book.photo="default.jpeg"
+        }
         var tr = document.createElement("tr");
         tr.innerHTML = `<td>${book.no}</td>
-        <td><a href="view.html?no=${book.no}">${book.title}</a></td>
+        <td><a href="view.html?no=${book.no}">
+        <img src="photo?filename=${book.photo}">
+        ${book.title}</a></td>
         <td>${book.author}</td>
         <td>${book.press}</td>
         <td>${book.page}</td>`;
