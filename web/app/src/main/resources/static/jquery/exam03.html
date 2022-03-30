@@ -11,7 +11,6 @@
   </style>
 </head>
 <body>
-
   <h1>exam01</h1>
   <button id="btn1">대화상자 보이기 - 모달 대화상자(대화상자 외 배경 UI를 클릭 못하게 하는 것)</button>
   <div id="dialog" title="Basic dialog">
@@ -23,6 +22,7 @@
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script>
 $('#btn1').click(() => {
+  
   $('#dialog').dialog({
     modal: true,
     resizable: false

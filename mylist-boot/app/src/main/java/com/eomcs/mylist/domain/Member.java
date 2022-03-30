@@ -9,8 +9,5 @@ public class Member {
   String name;
   String email;
   String password;
-  boolean valid;
-  Date createdDate;
-
-
+  Date registDate;
 }

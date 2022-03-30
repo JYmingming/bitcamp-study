@@ -3,6 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>독서록</title>
+  <style>
+    .x-photo-box {
+      display: inline-block;
+      text-align: center; 
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+    } 
+  </style>
 </head>
 <body>
 <h1>독서록</h1>
@@ -30,15 +39,15 @@
     })
     .then(function(books) {
       for (var book of books) {
-        
-        if(book.photo==null){
-        	book.photo="default.jpeg"
+        if (book.photo == null) {
+        	book.photo = "default.jpg";
         }
         var tr = document.createElement("tr");
         tr.innerHTML = `<td>${book.no}</td>
         <td><a href="view.html?no=${book.no}">
-        <img src="photo?filename=${book.photo}">
-        ${book.title}</a></td>
+          <div class="x-photo-box"><img src="photo?filename=50x50_${book.photo}"></div>
+          ${book.title}
+        </a></td>
         <td>${book.author}</td>
         <td>${book.press}</td>
         <td>${book.page}</td>`;

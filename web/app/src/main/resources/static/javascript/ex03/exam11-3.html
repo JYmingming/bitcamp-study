@@ -9,9 +9,9 @@
 <script>
 "use strict"
 //
-function createBox() {
+function createBox() { 
   var value;
-
+  
   var box = new Object();
   box.setValue = function(v) {
     // 이 클로저가 사용하는 value 변수는 바깥 함수의 로컬 변수이기 때문에
@@ -20,11 +20,11 @@ function createBox() {
   };
   box.getValue = function() {
     // 함수가 호출될 때 함께 생성된 클로저는 메모리를 공유한다.
-    // 따라서 setValue()와 getValue()가 사용하는 value 변수는
+    // 따라서 setValue()와 getValue()가 사용하는 value 변수는  
     // 같은 변수이다.
     return value;
   };
-
+  
   return box;
 }
 
@@ -37,10 +37,12 @@ box2.setValue(200);
 console.log(box1.getValue());
 console.log(box2.getValue());
 
-
-
-
 </script>
 
 </body>
 </html>
+
+
+
+
+

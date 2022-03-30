@@ -9,48 +9,57 @@
 <script>
 // 자바스크립트의 함수는 함수를 호출할 때 전달한 값들을 보관하는 배열과 유사한 변수를 내장하고 있다.
 // => 그 내장 변수의 이름은 "arguments" 이다.
+
 function f1(a) {
 	console.log("a =", a);
-	console.log(arguments);
+	console.log(arguments); // arguments 에는 넘어 오는 모든 값이 저장되어 있다.
 }
 
 f1();
 console.log("----------------");
+
 f1(100);
 console.log("----------------");
-f1(100,200,300,400);
+
+f1(100, 200, 300, 400);
 console.log("----------------");
 
-	function f2(a){
-		for (var i = 0; i < arguments.length; i++) {
-			console.log(arguments[i]);
-		}
-	}
-
-
-f2(100,200,300,400);
-console.log("----------------");
-
-function f3(a){
-	for (var value of arguments) {
-    console.log(value);
-  }
-}
-f3(100,200,300,400);
-console.log("----------------");
-
-function f4(a){
-	for (var i in arguments) {
+function f2(a) {
+	for (var i = 0; i < arguments.length; i++) {
 		console.log(arguments[i]);
 	}
 }
+f2(100, 200, 300, 400);
+console.log("----------------");
 
+function f3(a) {
+  for (var value of arguments) {
+    console.log(value);
+  }
+}
 
+f3(100, 200, 300, 400);
+console.log("----------------");
 
+function f4(a) {
+  for (var i in arguments) {
+    console.log(arguments[i]);
+  }
+}
 
-//f1();
-//f1(100);
+f4(100, 200, 300, 400);
+console.log("----------------");
 
+function f5(a) {
+	// arguments 내장 변수는 Array() 초기화시킨 배열 객체가 아니기 때문에
+	// forEach()라는 함수가 없다.
+	arguments.forEach(function(value) {
+		console.log(value);
+	});
+}
+
+f5(100, 200, 300, 400);
+console.log("----------------");
 
 // 주의!
 // => 자바스크립트는 파라미터의 개수와 상관없이 아규먼트를 넘길 수 있기 때문에

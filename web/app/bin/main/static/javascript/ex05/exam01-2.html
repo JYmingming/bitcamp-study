@@ -17,13 +17,14 @@
 <script>
 "use strict"
 
-// getElementsByTagName("태그이름")
+// Document.prototype.getElementsByTagName("태그이름")
 // => HTMLCollection 객체 리턴
 // => HTMLCollection은 배열이 아니다!
 //
 var el = document.getElementsByTagName("h2");
 
 console.log(el.constructor.name);
+
 // HTMLCollection 객체는 배열은 아니지만,
 // 배열처럼 length 프로퍼티가 있고,
 // 인덱스 번호를 이용하여 찾은 태그들을 꺼낼 수 있다.

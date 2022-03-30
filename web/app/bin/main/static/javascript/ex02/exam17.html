@@ -27,9 +27,11 @@ console.log("----------------------");
 // 중간에 인덱스를 건너 뛰고 값을 넣을 수 있다.
 arr[7] = "eee";
 console.log(arr.length);
-console.log(arr[6]);
 console.log(arr);
 
+// 규칙1: script 태그에 변수가 선언되어 있지 않으면, is not defined
+// 규칙2: script 태그에 변수는 있지만 값을 설정하지 않았으면, undefined
+// 규칙3: 객체에 변수가 없으면, undefined
 </script>
 </body>
 </html>

@@ -8,21 +8,24 @@ import com.eomcs.mylist.dao.BoardDao;
 import com.eomcs.mylist.domain.Board;
 import com.eomcs.mylist.service.BoardService;
 
-@Service
+@Service // Spring IoC 컨테이너가 객체를 만들어 저장할 때 클래스 이름을 사용한다. 예) defaultBoardService
 public class DefaultBoardService implements BoardService {
 
   @Autowired
   BoardDao boardDao;
 
+  @Override
   @Transactional
   public int add(Board board) {
     return boardDao.insert(board);
   }
 
+  @Override
   public List<Board> list() {
     return boardDao.findAll();
   }
 
+  @Override
   public Board get(int no) {
     Board board = boardDao.findByNo(no);
     if (board != null) {
@@ -31,11 +34,13 @@ public class DefaultBoardService implements BoardService {
     return board;
   }
 
+  @Override
   @Transactional
   public int update(Board board) {
     return boardDao.update(board);
   }
 
+  @Override
   @Transactional
   public int delete(int no) {
     return boardDao.delete(no);

@@ -40,25 +40,22 @@ var text2 = document.createTextNode("내용입니다."); // 내용입니다.
 
 // Node의 함수를 사용해서 콘텐트를 설정할 수 있다.
 h1.appendChild(text); // <h1>제목입니다.</h1>
-h1.innerHTML = "제목입니다."; // innerHTML에 직접 값을 넣을 수 도 있다.
+// h1.innerHTML = "제목입니다."; // innerHTML에 직접 값을 넣을 수 도 있다.
 
 p.appendChild(text2); // <p>내용입니다.</p>
 
 article.appendChild(h1); // <article><h1>제목입니다.</h1></article>
 article.appendChild(p); // <article><h1>제목입니다.</h1><p>내용입니다.</p></article>
 
-
-if(confirm("article태그를 추가하시겠습니까?")){
-    section.appendChild(article);
+if (confirm("article 태그를 추가하겠습니까?")) {
+  // 새로 만든 article 태그를 section 태그의 막내 자식태그로 붙인다.
+  section.appendChild(article);
+  // <section>
+  //   <article>...</article>
+  //   <article>...</article>
+  //   <article><h1>제목입니다.</h1><p>내용입니다.</p></article>
+  // </section>
 }
-// 새로 만든 article 태그를 section 태그의 막내 자식태그로 붙인다.
-
-// <section>
-//   <article>...</article>
-//   <article>...</article>
-//   <article><h1>제목입니다.</h1><p>내용입니다.</p></article>
-// </section>
-
 </script>
 </body>
 </html>

@@ -21,15 +21,16 @@ f1(); // "f1 함수 객체에 저장된 함수 코드를 실행하라!"는 의�
 f1.v1 = "홍길동";
 f1.v2 = 100;
 f1.v3 = true;
-f1.hello = () => console.log("hello");
+f1.hello = function() {
+  console.log("Hello!");
+};
+f1.hello2 = () => console.log("Hello2!");
 
 console.log(f1.v1);
 console.log(f1.v2);
 console.log(f1.v3);
 f1.hello();
-
-
-
+f1.hello2();
 </script>
 
 </body>
