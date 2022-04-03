@@ -8,10 +8,11 @@
 
 <h1>게시글 상세</h1>
 
-<form>
-번호: <input id="x-no" type="text" readonly><br>
-제목*: <input id="x-title" type="text"><br>
-내용*: <textarea id="x-content" cols="60" rows="10"></textarea><br>
+<form name="form1">
+번호: <input name="no" type="text" readonly><br>
+제목*: <input name="title" type="text"><br>
+내용*: <textarea name="content" cols="60" rows="10"></textarea><br>
+작성자: <span id="x-writer"></span><br>
 조회수: <span id="x-viewCount"></span><br>
 등록일: <span id="x-createdDate"></span><br>
 별표(*) 항목은 필수 입력입니다.<br>
@@ -44,9 +45,10 @@
   }
   console.log(no);
 
-  var xNo = document.querySelector("#x-no");
-  var xTitle = document.querySelector("#x-title");
-  var xContent = document.querySelector("#x-content");
+  var xNo = document.querySelector("input[name=no]");
+  var xTitle = document.querySelector("input[name=title]");
+  var xContent = document.querySelector("textarea");
+  var xWriter = document.querySelector("#x-writer");
   var xViewCount = document.querySelector("#x-viewCount");
   var xCreatedDate = document.querySelector("#x-createdDate");
 
@@ -60,6 +62,7 @@
       xNo.value = board.no;
       xTitle.value = board.title;
       xContent.value = board.content;
+      xWriter.innerHTML = board.writer.name;
       xViewCount.innerHTML = board.viewCount;
       xCreatedDate.innerHTML = board.createdDate;
     });
@@ -69,14 +72,22 @@
       window.alert("필수 입력 항목이 비어 있습니다.");
       return;
     }
-
-    fetch(`/board/update?no=${no}&title=${xTitle.value}&content=${xContent.value}`)
-      .then(function(response) {
-        return response.text();
+    
+    var fd = new FormData(document.forms.namedItem("form1"));
+    
+    fetch("/board/update", {
+    	  method: "POST",
+    	  body: new URLSearchParams(fd)
+      }).then(function(response) {
+        return response.json();
       })
-      .then(function(text) {
-        console.log(text);
-        location.href = "index.html";
+      .then(function(result) {
+        if (result.status == "success") {
+        	location.href = "index.html";
+        } else {
+        	window.alert("게시글 변경 실패!");
+        	console.log(result.data);
+        }
       });
   };
 
@@ -90,8 +101,12 @@
         return response.json();
       })
       .then(function(result) {
-        console.log(result);
-        location.href = "index.html";
+    	  if (result.status == "success") {
+          location.href = "index.html";
+        } else {
+          window.alert("게시글 삭제 실패!");
+          console.log(result.data);
+        }
       });
   };
 

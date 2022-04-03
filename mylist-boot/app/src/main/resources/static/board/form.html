@@ -8,17 +8,17 @@
 
 <h1>새 게시글</h1>
 
-<form>
-제목*: <input id="x-title" type="text"><br>
-내용*: <textarea id="x-content" cols="60" rows="10"></textarea><br>
+<form name="form1">
+제목*: <input type="text" name="title"><br>
+내용*: <textarea cols="60" rows="10" name="content"></textarea><br>
 별표(*) 항목은 필수 입력입니다.<br>
 <button id="x-add-btn" type="button">등록</button>
 <button id="x-cancel-btn" type="button">취소</button>
 </form>
 
 <script type="text/javascript">
-  var xTitle = document.querySelector("#x-title");
-  var xContent = document.querySelector("#x-content");
+  var xTitle = document.querySelector("input[name=title]");
+  var xContent = document.querySelector("textarea");
 
   document.querySelector("#x-add-btn").onclick = function() {
     if (xTitle.value == "" || xContent.value == "") {
@@ -26,13 +26,21 @@
       return;
     }
 
-    fetch(`/board/add?title=${xTitle.value}&content=${xContent.value}`)
-      .then(function(response) {
-        return response.text();
+    var fd = new FormData(document.forms.namedItem("form1"));
+    
+    fetch("/board/add", {
+    	  method: "POST",
+    	  body: new URLSearchParams(fd)
+      }).then(function(response) {
+        return response.json();
       })
-      .then(function(text) {
-        console.log(text);
-        location.href = "index.html";
+      .then(function(result) {
+        if (result.status == "success") {
+        	location.href = "index.html";
+        } else {
+        	window.alert("게시글 등록 실패!");
+        	console.log(result.data);
+        }
       });
   };
 
