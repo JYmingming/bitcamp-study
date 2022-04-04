@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>게시글</title>
-</head>
-<body>
-
 <h1>게시글 상세</h1>
 
 <form name="form1">
 번호: <input name="no" type="text" readonly><br>
 제목*: <input name="title" type="text"><br>
-내용*: <textarea name="content" cols="60" rows="10"></textarea><br>
+내용*: <textarea name="content" cols="50" rows="10"></textarea><br>
 작성자: <span id="x-writer"></span><br>
 조회수: <span id="x-viewCount"></span><br>
 등록일: <span id="x-createdDate"></span><br>
@@ -24,7 +16,7 @@
 <script type="text/javascript">
 
   // 1) URL에서 쿼리스트링(query string)을 추출한다.
-  var arr = location.href.split("?");
+  var arr = location.href.split("?"); 
   console.log(arr);
 
   if (arr.length == 1) {
@@ -83,7 +75,7 @@
       })
       .then(function(result) {
         if (result.status == "success") {
-        	location.href = "index.html";
+        	location.href = "?content=/board/index.html";
         } else {
         	window.alert("게시글 변경 실패!");
         	console.log(result.data);
@@ -92,7 +84,7 @@
   };
 
   document.querySelector("#x-cancel-btn").onclick = function() {
-    window.location.href = "index.html";
+    window.location.href = "?content=/board/index.html";
   };
 
   document.querySelector("#x-delete-btn").onclick = function() {
@@ -102,7 +94,7 @@
       })
       .then(function(result) {
     	  if (result.status == "success") {
-          location.href = "index.html";
+          location.href = "?content=/board/index.html";
         } else {
           window.alert("게시글 삭제 실패!");
           console.log(result.data);
@@ -112,5 +104,3 @@
 
 </script>
 
-</body>
-</html>

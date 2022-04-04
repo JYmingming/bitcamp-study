@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>게시글</title>
+  <link href="/css/common.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+<div id="header"></div>
+
+<div id="sidebar"></div>
+
+<div id="content">
+<h1>게시글</h1>
+<a href="form.html">새 게시글</a>
+<table id="x-board-table" border="1">
+<thead>
+  <tr>
+    <th>번호</th>
+    <th>제목</th>
+    <th>작성자</th>
+    <th>조회수</th>
+    <th>등록일</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div><!-- #content -->
+
+<div id="footer"></div>
+
+</div><!-- .container -->
+
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+$("#header").load("/header.html");
+$("#footer").load("/footer.html");
+$("#sidebar").load("/sidebar.html");
+</script>
+
+<script type="text/javascript">
+  var tbody = document.querySelector("#x-board-table tbody")
+
+  fetch("/board/list")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(boards) {
+      console.log(boards);
+      for (var board of boards) {
+        var tr = document.createElement("tr");
+        tr.innerHTML = `<td>${board.no}</td>
+        <td><a href="view.html?no=${board.no}">${board.title}</a></td>
+        <td>${board.writer.name}</td>
+        <td>${board.viewCount}</td>
+        <td>${board.createdDate}</td>`;
+        tbody.appendChild(tr);
+      }
+    });
+</script>
+
+</body>
+</html>

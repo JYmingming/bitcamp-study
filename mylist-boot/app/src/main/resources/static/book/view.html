@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>독서록</title>
-  <style>
-    #x-photo {
-      height: 150px;
-    }
-  </style>
-</head>
-<body>
+<style>
+  #x-photo {
+    height: 150px;
+  }
+</style>
 
 <h1>독서록 상세</h1>
 
@@ -78,7 +71,7 @@
       xFeed.value = book.feed;
       
       if (book.photo != null) {
-    	  xPhoto.src = "photo?filename=" + book.photo;
+    	  xPhoto.src = "/book/photo?filename=" + book.photo;
       }
     });
 
@@ -109,12 +102,12 @@
       })
       .then(function(text) {
         console.log(text);
-        location.href = "index.html";
+        location.href = "?content=/book/index.html";
       });
   };
 
   document.querySelector("#x-cancel-btn").onclick = function() {
-    window.location.href = "index.html";
+    window.location.href = "?content=/book/index.html";
   };
 
   document.querySelector("#x-delete-btn").onclick = function() {
@@ -124,11 +117,8 @@
       })
       .then(function(result) {
         console.log(result);
-        location.href = "index.html";
+        location.href = "?content=/book/index.html";
       });
   };
 
 </script>
-
-</body>
-</html>

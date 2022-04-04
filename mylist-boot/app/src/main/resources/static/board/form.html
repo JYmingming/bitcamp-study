@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>게시글</title>
-</head>
-<body>
-
 <h1>새 게시글</h1>
 
 <form name="form1">
@@ -36,7 +28,7 @@
       })
       .then(function(result) {
         if (result.status == "success") {
-        	location.href = "index.html";
+        	location.href = "?content=/board/index.html";
         } else {
         	window.alert("게시글 등록 실패!");
         	console.log(result.data);
@@ -45,9 +37,6 @@
   };
 
   document.querySelector("#x-cancel-btn").onclick = function() {
-    window.location.href = "index.html";
+    window.location.href = "?content=/board/index.html";
   };
 </script>
-
-</body>
-</html>
