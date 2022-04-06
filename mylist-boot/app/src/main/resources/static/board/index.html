@@ -21,9 +21,14 @@
     .then(function(response) {
       return response.json();
     })
-    .then(function(boards) {
-      console.log(boards);
-      for (var board of boards) {
+    .then(function(result) {
+      if (result.status == "fail") {
+    	  window.alert("서버 요청 오류!");
+    	  console.log(result.data);
+    	  return;
+      }
+      
+      for (var board of result.data) {
         var tr = document.createElement("tr");
         tr.innerHTML = `<td>${board.no}</td>
         <td><a href="?content=/board/view.html&no=${board.no}">${board.title}</a></td>

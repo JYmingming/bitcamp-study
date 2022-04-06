@@ -58,8 +58,16 @@
     .then(function(response) {
       return response.json();
     })
-    .then(function(contact) {
+    .then(function(result) {
       // 4) 연락처 상세 정보를 화면에 출력한다.
+      if (result.status == "fail") {
+        window.alert("서버 요청 오류!");
+        console.log(result.data);
+        return;
+      }
+      
+      var contact = result.data;
+      
       xName.value = contact.name;
       xEmail.value = contact.email;
       xCompany.value = contact.company;
@@ -99,11 +107,15 @@
 	    
     fetch(`/contact/update?${qs}`)
       .then(function(response) {
-        return response.text();
+        return response.json();
       })
-      .then(function(text) {
-        console.log(text);
-        location.href = "?content=/contact/index.html";
+      .then(function(result) {
+    	  if (result.status == "success") {
+          location.href = "?content=/contact/index.html";
+        } else {
+          window.alert("연락처 변경 실패!");
+          console.log(result.data);
+        }
       });
   };
 
@@ -117,8 +129,12 @@
         return response.json();
       })
       .then(function(result) {
-        console.log(result);
-        location.href = "?content=/contact/index.html";
+    	  if (result.status == "success") {
+          location.href = "?content=/contact/index.html";
+        } else {
+          window.alert("연락처 삭제 실패!");
+          console.log(result.data);
+        }
       });
   };
   

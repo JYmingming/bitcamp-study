@@ -60,8 +60,16 @@
     .then(function(response) {
       return response.json();
     })
-    .then(function(book) {
+    .then(function(result) {
       // 4) 연락처 상세 정보를 화면에 출력한다.
+      if (result.status == "fail") {
+        window.alert("서버 요청 오류!");
+        console.log(result.data);
+        return;
+      }
+      
+      var book = result.data;
+      
       xTitle.value = book.title;
       xAuthor.value = book.author;
       xPress.value = book.press;
@@ -98,11 +106,15 @@
         body: fd
       }) 
       .then(function(response) {
-        return response.text();
+        return response.json();
       })
-      .then(function(text) {
-        console.log(text);
-        location.href = "?content=/book/index.html";
+      .then(function(result) {
+    	  if (result.status == "success") {
+          location.href = "?content=/book/index.html";
+        } else {
+          window.alert("독서록 변경 실패!");
+          console.log(result.data);
+        }
       });
   };
 
@@ -116,8 +128,12 @@
         return response.json();
       })
       .then(function(result) {
-        console.log(result);
-        location.href = "?content=/book/index.html";
+          if (result.status == "success") {
+            location.href = "?content=/book/index.html";
+          } else {
+            window.alert("독서록 삭제 실패!");
+            console.log(result.data);
+          }
       });
   };
 

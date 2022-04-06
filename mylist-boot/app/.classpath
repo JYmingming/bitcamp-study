@@ -43,6 +43,11 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-log4j2/2.6.0/a861f46aa525a320e5d9a1a68bb456bcce254e7a/spring-boot-starter-log4j2-2.6.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-log4j2/2.6.0/54732e306948833324ef794104a86f5a5f6f9f75/spring-boot-starter-log4j2-2.6.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/2.6.0/3690d6c8316301048dee69903b5f29bb5dabc2c7/spring-boot-starter-jdbc-2.6.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/2.6.0/4281c2237b3fafef40c94cef29623e920b633ab9/spring-boot-starter-jdbc-2.6.0.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
@@ -83,6 +88,26 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.14.1/e67ac607dc200a77e48943d03b0e7c696f6217de/log4j-slf4j-impl-2.14.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.14.1/9a40554b8dab7ac9606089c87ae8a5ba914ec932/log4j-slf4j-impl-2.14.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.14.1/7f640e4855733d9532eed15af62c54956e7b8224/log4j-core-2.14.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.14.1/9141212b8507ab50a45525b545b39d224614528b/log4j-core-2.14.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-jul/2.14.1/7f7a2461ba1a083fc97c80bce44ac131ffe26db0/log4j-jul-2.14.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-jul/2.14.1/8ba38040d35759986f56779c76767e437d4db626/log4j-jul-2.14.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.32/d03fa92a2a508b5595b896b93f13f04bcde11171/jul-to-slf4j-1.7.32-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.32/8a055c04ab44e8e8326901cadf89080721348bdb/jul-to-slf4j-1.7.32.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/4.0.3/b27e256676e4457e73aaea5dfe19795ab2451f93/HikariCP-4.0.3-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/4.0.3/107cbdf0db6780a065f895ae9d8fbf3bb0e1c21f/HikariCP-4.0.3.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
@@ -114,11 +139,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/2.6.0/3d66ff1679568e13779e507bf80ce579e0d50998/spring-boot-2.6.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/2.6.0/44234f609f8cbe15bea35768e85e83a3d2dbee28/spring-boot-2.6.0.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/2.6.0/96e933b4a76a1ef62112234c3d5172a7c708f9ec/spring-boot-starter-logging-2.6.0-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/2.6.0/7ecfaa03a1c77847b1d92082575b13cd12de478d/spring-boot-starter-logging-2.6.0.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -163,22 +183,12 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.7/3bad21efb8d5c9414a2cdd123f687d5697638aa1/logback-classic-1.2.7-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.7/3e89a85545181f1a3a9efc9516ca92658502505b/logback-classic-1.2.7.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-to-slf4j/2.14.1/54c937b22e4c4025c1f85482f92d4cf87b2d0972/log4j-to-slf4j-2.14.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-to-slf4j/2.14.1/ce8a86a3f50a4304749828ce68e7478cafbc8039/log4j-to-slf4j-2.14.1.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.32/d03fa92a2a508b5595b896b93f13f04bcde11171/jul-to-slf4j-1.7.32-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.32/8a055c04ab44e8e8326901cadf89080721348bdb/jul-to-slf4j-1.7.32.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.32/4381b152f738580aef4e436b2692a3db30609b26/slf4j-api-1.7.32-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.32/cdcff33940d9f2de763bc41ea05a0be5941176c3/slf4j-api-1.7.32.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.14.1/b2327c47ca413c1ec183575b19598e281fcd74d8/log4j-api-2.14.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.14.1/cd8858fbbde69f46bce8db1152c18a43328aae78/log4j-api-2.14.1.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -229,16 +239,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.13/48e59686ad1a2dd39f4f1b3d6a63a7424091893a/spring-jcl-5.3.13-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.3.13/3aa15be194887fbda3912ecbb4ab6ec8dfdebdb0/spring-jcl-5.3.13.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.7/2716c720b4d14ee019ec276658b5897ca9a9c88d/logback-core-1.2.7-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.7/31f7db3c4277023742268c0c3f9b65f1f297e49a/logback-core-1.2.7.jar">
-		<attributes>
-			<attribute name="gradle_used_by_scope" value="main,test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.14.1/b2327c47ca413c1ec183575b19598e281fcd74d8/log4j-api-2.14.1-sources.jar" kind="lib" path="/Users/Ming/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.14.1/cd8858fbbde69f46bce8db1152c18a43328aae78/log4j-api-2.14.1.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>

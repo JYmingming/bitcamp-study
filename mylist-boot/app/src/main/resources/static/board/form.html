@@ -27,11 +27,11 @@
         return response.json();
       })
       .then(function(result) {
+    	  console.log(result);
         if (result.status == "success") {
         	location.href = "?content=/board/index.html";
         } else {
-        	window.alert("게시글 등록 실패!");
-        	console.log(result.data);
+        	alert(result.data);
         }
       });
   };

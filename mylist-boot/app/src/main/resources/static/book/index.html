@@ -31,8 +31,14 @@
     .then(function(response) {
       return response.json();
     })
-    .then(function(books) {
-      for (var book of books) {
+    .then(function(result) {
+      if (result.status == "fail") {
+          window.alert("서버 요청 오류!");
+          console.log(result.data);
+          return;
+      }
+        
+      for (var book of result.data) {
         if (book.photo == null) {
         	book.photo = "default.jpg";
         }

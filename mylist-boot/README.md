@@ -68,51 +68,14 @@
 ### 18.4 세션과 쿠키의 활용 : 쿠키 활용하기
 ### 19.1 UI 레이아웃을 다루는 방법 : 헤더, 사이드바, 풋터 넣기
 ### 19.2 UI 레이아웃을 다루는 방법 : 템플릿 페이지를 활용하기
+### 20.1 인터셉터 활용 : 사용자 인증 확인 코드를 필터로 분리하기
+### 21.1 Log4j 적용하기
 
-### 29.1 `Chain of Responsibility` 디자인 패턴 : 프로젝트에 적용
-### 29.2 `Chain of Responsibility` 디자인 패턴 : 필터 객체 자동 로딩 및 실행
-### 29.3 `Chain of Responsibility` 디자인 패턴 : 로그인 검사를 필터로 분리
-
-
-### 31.1 Servlet 기술 활용하기 : GET/POST 요청 구분과 HTML 도입하기
-### 31.2 Servlet 기술 활용하기 : 필터와 리스너 활용
-### 31.3 Servlet 기술 활용하기 : 리프래시와 리다이렉트 활용
-### 31.4 Servlet 기술 활용하기 : 포워딩과 인클루딩 활용
-### 31.5 Servlet 기술 활용하기 : 쿠키와 세션 활용
-### 31.6 Servlet 기술 활용하기 : 서블릿 예외 처리
-
-### 32.1 MVC 아키텍처로 전환하기 : JSP를 활용하여 view 컴포넌트 분리하기
-### 32.2 MVC 아키텍처로 전환하기 : JSP 엘리먼트와 JSP 액션 태그 사용하기
-### 32.3 MVC 아키텍처로 전환하기 : EL 사용하기
-### 32.4 MVC 아키텍처로 전환하기 : JSTL 사용하기
-
-### 33.1 Front Controller 도입하기 : 프론트 컨트롤러 만들기
-### 33.2 Front Controller 도입하기 : 페이지 컨트롤러를 일반 객체로 전환하기
-
-### 34.1 Spring WebMVC 프레임워크 도입하기 : 스프링 WebMVC 적용
-### 34.2 Spring WebMVC 프레임워크 도입하기 : CRUD 요청 핸들러 합치기
-### 34.3 Spring WebMVC 프레임워크 도입하기 : GET/POST 요청 구분하기
-### 34.4 Spring WebMVC 프레임워크 도입하기 : 요청 핸들러의 파라미터 다루기
-### 34.5 Spring WebMVC 프레임워크 도입하기 : InternalResourceViewResolver 도입
 
 ### 35.1 기타 : Log4j 적용
 ### 35.2 기타 : 페이징 처리
 ### 35.3 기타 : @PathVariable, @SessionAttributes, @ModelAttribute 다루기
 
-### 32.5 MVC 아키텍처로 전환하기 : Bootstrap CSS 라이브러리 적용하기
 
-### 46 - 객체 생성을 자동화하는 IoC 컨테이너 만들기
-
-### 47 - IoC 컨테이너 개선 : 애노테이션을 이용한 객체 관리
-
-### 48 - 인터페이스 대신 애노테이션으로 메서드 구분하기
-
-### 50 - Spring IoC 컨테이너 도입하기
-
-### 51 - Spring IoC 컨테이너와 MyBatis 연동하기
-
-### 52 - 애노테이션을 이용하여 트랜잭션 제어하기
 
 ### 53 - Log4j를 사용하여 애플리케이션 로그 처리하기
-
-### 54 - Web 기술 도입하기
