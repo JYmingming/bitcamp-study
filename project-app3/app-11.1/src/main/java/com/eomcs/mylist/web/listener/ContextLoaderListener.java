@@ -110,25 +110,19 @@ public class ContextLoaderListener implements ServletContextListener {
         // 생성자를 호출하여 객첵를 생성한다.
         Object obj = constructor.newInstance(args);
 
-        // 클래스 정보에서 @RequestMapping 애노테이션을 추출한다.
-        String rootPath = "";
-        RequestMapping requestMappingAnno = classInfo.getAnnotation(RequestMapping.class);
-        if (requestMappingAnno != null) {
-          rootPath = requestMappingAnno.value();
-        }
-
         // @RequestMapping이 붙은 메서드를 알아낸다.
         Method[] methods = classInfo.getDeclaredMethods();
         for (Method m : methods) {
           RequestMapping anno = m.getAnnotation(RequestMapping.class);
-          String controllerPath = rootPath + anno.value();
           if (anno != null) {
             // 생성된 request handler 객체를 ServletContext 보관소에 담는다.
-            sc.setAttribute(controllerPath, 
+            // 이때 이름은 @Component 애노테이션의 value 값을 사용한다.
+            sc.setAttribute(compAnno.value(), 
                 new RequestMappingHandler()
                 .setObj(obj)
                 .setMethod(m)
-                .setPathInfo(controllerPath));
+                .setPathInfo(compAnno.value()));
+            break;
           }
         }
       }
