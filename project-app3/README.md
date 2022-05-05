@@ -17,5 +17,6 @@
 ### 11 - 애노테이션으로 요청을 처리할 메서드를 표시하기
 ### 11.1 - request handler를 추출하는 코드를 리팩토링
 ### 12 - 페이지 컨트롤러에 request handler를 여러 개 두기
-###  - Spring WebMVC 프레임워크 도입
+### 13 - request handler의 파라미터 값 자동처리하기
+### 14 - Spring WebMVC 프레임워크 도입
 ###  - Spring Boot로 전환
