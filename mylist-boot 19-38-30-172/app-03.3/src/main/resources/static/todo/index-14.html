@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>To-do</title>
+  <style>
+  .todo-checked {
+    text-decoration: line-through;
+    color: gray;
+  }
+  </style>
+</head>
+<body>
+<h1>To-do</h1>
+<a href="form.html">추가</a>
+<table id="x-todo-table" border="1">
+<thead>
+  <tr>
+    <th></th>
+    <th>해야 할 일</th>
+    <th>변경</th>
+    <th>삭제</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<input type="text" id="x-title-input">
+
+<script type="text/javascript">
+  var titleInput = document.querySelector("#x-title-input");
+  // titleInput.style["display"] = "none";
+
+  var tbody = document.querySelector("#x-todo-table tbody")
+
+  fetch("/todo/list")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(todoList) {
+      console.log(todoList);
+      for (var i = 0; i < todoList.length; i++) {
+        var tr = document.createElement("tr");
+        var checkedOption = "";
+        var titleTdOption = "";
+        if (todoList[i].done) {
+          checkedOption = "checked";
+          titleTdOption = "class='todo-checked'";
+        }
+        tr.innerHTML = `<td><input type="checkbox" ${checkedOption} onchange="checkTodo(${i}, event.target.checked)"></td>
+        <td data-no="${i}" ${titleTdOption}>${todoList[i].title}</td>
+        <td><button type="button" onclick="updateTodo(${i})">변경</button></td>
+        <td><button type="button" onclick="deleteTodo(${i})">삭제</button></td>`;
+        tbody.appendChild(tr);
+      }
+    });
+
+ function deleteTodo(no) {
+   fetch(`/todo/delete?index=${no}`)
+     .then(function(response) {
+       return response.json();
+     })
+     .then(function(result) {
+       if (result == 0) {
+         window.alert("삭제하지 못했습니다!");
+       } else {
+         location.reload();
+       }
+     });
+ }
+
+ function checkTodo(no, checked) {
+   console.log(no, checked);
+   fetch(`/todo/check?index=${no}&done=${checked}`)
+     .then(function(response) {
+       return response.json();
+     })
+     .then(function(result) {
+       if (result == 0) {
+         window.alert("변경하지 못했습니다!");
+       } else {
+         var titleTd = document.querySelector(`tbody td[data-no="${no}"]`);
+         if (checked) {
+           titleTd.classList.add("todo-checked");
+         } else {
+           titleTd.classList.remove("todo-checked")
+         }
+       }
+     });
+ }
+
+ function updateTodo(no) {
+   var titleTd = document.querySelector(`tbody td[data-no="${no}"]`);
+   titleInput.value = titleTd.innerHTML;
+   titleTd.innerHTML = "";
+   titleTd.appendChild(titleInput);
+ }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'eclipse-wtp' // 이클립스 웹 프로젝트를 다룰 수 있는 기능 추가
+    id 'war' // 웹 애플리케이션 배포파일(.war)을 생성할 수 있는 기능 추가
+    id "io.freefair.lombok" version "6.4.1"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  // Servlet API 라이브러리
+  // => 컴파일 할 때만 사용하고, 배포할 때는 제외할 라이브러리
+  providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+
+  // MariaDB JDBC 드라이버
+  implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.3'
+  
+  // Mybatis 프레임워크
+  implementation 'org.mybatis:mybatis:3.5.9'
+  
+  testImplementation 'junit:junit:4.13.2'
+  implementation 'com.google.guava:guava:30.1.1-jre'
+}
+
+// CLI(콘솔창) 에서 빌드 할 때 사용할 설정 정보
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+}
+
+// Eclipse IDE에서 빌드 할 때 사용할 설정 정보
+eclipse {
+    project {
+        name = "project-app3"
+    }
+    jdt {
+      sourceCompatibility = 11
+      targetCompatibility = 11
+      javaRuntimeName = "JavaSE-11"
+    }
+    
+    // 자바 웹 개발 도구에서 사용할 값을 설정한다.
+    wtp {
+        facet {
+            // 웹애플리케이션을 실행할 컨테이너의 자바 버전을 설정한다.
+            facet name: 'jst.java', version: '11'
+        }
+        facet {
+            // 웹애플리케이션을 실행할 컨테이너의 Servlet/JSP 버전을 설정한다.
+            facet name: 'jst.web', version: '4.0'
+        }
+        component {
+            // 웹애플리케이션의 컨텍스트 루트 경로를 설정한다.
+            // => 즉 이 웹 애플리케이션에 접근할 때 '/'를 사용할 것이라는 의미다. 
+            contextPath = '/'
+        }
+    }
+}
+
+// 배포파일(.war)의 이름을 설정
+// => 웹애플리케이션의 context root 이름으로도 사용된다.
+war {
+    archiveBaseName = "web"
+}
+
+
+
+

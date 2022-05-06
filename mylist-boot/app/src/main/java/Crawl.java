@@ -94,7 +94,7 @@ public class Crawl {
       if (url.contains("blank.gif")) {
 
       }else {
-        //put
+        //
         urlMap.put(i,url);
       }
 

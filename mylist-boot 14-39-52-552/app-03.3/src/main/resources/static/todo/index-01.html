@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>To-do</title>
+</head>
+<body>
+<h1>To-do</h1>
+<a href="form.html">추가</a>
+<table id="x-todo-table" border="1">
+<thead>
+  <tr>
+    <th>해야 할 일</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<script type="text/javascript">
+  fetch("/todo/list")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(todoList) {
+      console.log(todoList);
+    });
+</script>
+
+</body>
+</html>
