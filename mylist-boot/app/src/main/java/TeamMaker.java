@@ -10,14 +10,14 @@ public class TeamMaker {
         "박력", "서영범", "양성은", "양승범", "오민현", "오승지", "이상준", "이장일", "이재훈", "임성현",
         "장창훈", "장효범", "전영민", "정요섭", "정창성", "조원석", "채다해", "최리나", "한상은", "허정윤"
     };
-    //comment
+
     for (int i = 0; i < 100; i++) {
       int x = (int)(Math.random() * 30);
       int y = (int)(Math.random() * 30);
       String temp = names[x];
       names[x] = names[y];
       names[y] = temp;
-    }//comment
+    }//end for
 
     ArrayList<String> members = new ArrayList<>();
     for (String name : names) {
